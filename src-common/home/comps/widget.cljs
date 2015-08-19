@@ -4,11 +4,20 @@
 
 (enable-console-print!)
 
+(defn raw-str-widget [data]
+  (om/component
+    (html
+      [:div (:text data)])))
+
 (defn un-bouton [data]
   (println "Buttoning ...")
   (html
     [:hr]
-    (html/submit-button (:text data))))
+    [:input {
+             :type "submit"
+             :class "btn btn-default"
+             :value (:text data)}]
+    ))
 
 (defn hello [data]
   (println "Rendering ...")

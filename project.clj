@@ -35,8 +35,9 @@
               :notify-command ["node" "run.js"] ;; << ADD THIS
               :compiler {
                          :main cljs_express.core
-                         :output-to "out/cljs_express.js"
-                         :output-dir "out"
+                         :output-to "cljs_express.js"
+                         ;:output-to "out/cljs_express.js"
+                         ;:output-dir "out"
                          :preamble ["include.js"]
                          ; :verbose true
                          :cache-analysis true

@@ -5,21 +5,21 @@
 
 (enable-console-print!)
 
-(defn- do-template [content]
+(defn- do-template [data]
   (om/component
-    (html [:html
+    (html [:html {:lan "en"}
            [:header
             [:meta {:charset "utf-8"}]
             [:meta {:http-equiv "content-type" :content "text/html; charset=UTF-8"}]
-            [:title "CLJS Express"]
+            [:title (str "CLJS Express | " (:title data))]
             (html/include-css "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
             ]
            [:body
-            [:div {:id "container"
-                   :dangerouslySetInnerHTML {:__html content}}]
+            [:div {:id "container" :class "container"
+                   :dangerouslySetInnerHTML {:__html (:content data)}}]
             [:script {:type "text/javascript" :src "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"}]
             [:script {:type "text/javascript" :src "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"}]
-            [:script {:type "text/javascript" :src "/public/js/base.js"}]
+            [:script {:type "text/javascript" :src (:script data)}]
             ]
            ])))
 
@@ -32,7 +32,10 @@
   (str
     "<!DOCTYPE html>"
     (render-to-str
-      do-template (render-to-str widget/hello {}))))
+      do-template {:title "SS Reacting"
+                   :content (render-to-str widget data)
+                   :script "/public/js/base.js"}
+      )))
 
 ;(defn render
 ;  [widget data]

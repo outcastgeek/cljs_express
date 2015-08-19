@@ -17,7 +17,7 @@
   [req res]
   (-> res
     (ex/status 200)
-    (ex/send "Hello world!!")))
+    (ex/send (views/render widget/raw-str-widget {:text "Hello world!!"}))))
 
 (defn app-start
   [req res]
