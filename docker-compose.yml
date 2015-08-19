@@ -1,0 +1,20 @@
+#registry:
+#  image: registry:2.0.1
+#  ports:
+#    - "5000:5000"
+#    - "5001:5001"
+#  environment:
+#    SETTINGS_FLAVOR: s3
+#    AWS_BUCKET: modern_web
+#    STORAGE_PATH: /registry
+#    AWS_KEY: AKIAIZR3NY62HLMIFPTA
+#    AWS_SECRET: 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
+#    SEARCH_BACKEND: sqlalchemy
+cljs_express:
+  restart: always
+  build: .
+  ports:
+   - "1919:1919"
+  environment:
+    PORT: 1919
+    NODE_ENV: production
