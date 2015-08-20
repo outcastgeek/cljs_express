@@ -20,6 +20,6 @@
       (ex/static "static" "/public")
       (ex/use (.requestLogger ex/logfmt))                      ; Logger
       (ex/use "/" routes)
-      (ex/listen (if (nil? (os/env "PORT")) 3333 (os/env "PORT")))))
+      (ex/listen (if-let [PORT (os/env "PORT")] PORT 3333))))
 
 (set! *main-cli-fn* -main)
