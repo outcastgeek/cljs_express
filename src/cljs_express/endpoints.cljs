@@ -13,8 +13,10 @@
       (ex/status 200)
       (ex/send (views/render
                  views/default-template
-                 {:title "SS Reacting"
-                  :content (views/render-to-str widget/hello {})
+                 {:widget-name "BaseLayout"
+                  :title "SS Reacting"
+                  :content (views/render-to-str
+                             widget/hello {})
                   :script "/public/js/base.js"}))
       ))
 
