@@ -2,4 +2,4 @@
 
 cd /code/
 
-exec node run.js
+exec npm start --production

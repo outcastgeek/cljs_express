@@ -20,38 +20,38 @@ RUN apt-get install -y runit locales \
                        autoconf automake
 RUN echo "- done."
 
-RUN echo "Installing SODIUM ..."
-
-ENV SODIUM_VERSION 1.0.3
-
-RUN wget https://download.libsodium.org/libsodium/releases/libsodium-${SODIUM_VERSION}.tar.gz -O  /usr/src/libsodium-${SODIUM_VERSION}.tar.gz
-
-RUN cd /usr/src \
-    && tar zxf libsodium-${SODIUM_VERSION}.tar.gz \
-    && cd libsodium-${SODIUM_VERSION} \
-    && ./configure \
-    && make \
-    && make install \
-    && cd / && rm -rf /usr/src/libsodium-${SODIUM_VERSION}
-
-RUN  echo "- done."
-
-RUN echo "Installing ZeroMQ ..."
-
-ENV ZMQ_VERSION 4.1.2
-
-RUN wget http://download.zeromq.org/zeromq-${ZMQ_VERSION}.tar.gz -O  /usr/src/zeromq-${ZMQ_VERSION}.tar.gz
-
-RUN cd /usr/src \
-    && tar zxf zeromq-${ZMQ_VERSION}.tar.gz \
-    && cd zeromq-${ZMQ_VERSION} \
-    && ./configure \
-    && make \
-    && make install \
-    && ldconfig \
-    && cd / && rm -rf /usr/src/zeromq-${ZMQ_VERSION}
-
-RUN  echo "- done."
+# RUN echo "Installing SODIUM ..."
+#
+# ENV SODIUM_VERSION 1.0.3
+#
+# RUN wget https://download.libsodium.org/libsodium/releases/libsodium-${SODIUM_VERSION}.tar.gz -O  /usr/src/libsodium-${SODIUM_VERSION}.tar.gz
+#
+# RUN cd /usr/src \
+#     && tar zxf libsodium-${SODIUM_VERSION}.tar.gz \
+#     && cd libsodium-${SODIUM_VERSION} \
+#     && ./configure \
+#     && make \
+#     && make install \
+#     && cd / && rm -rf /usr/src/libsodium-${SODIUM_VERSION}
+#
+# RUN  echo "- done."
+#
+# RUN echo "Installing ZeroMQ ..."
+#
+# ENV ZMQ_VERSION 4.1.2
+#
+# RUN wget http://download.zeromq.org/zeromq-${ZMQ_VERSION}.tar.gz -O  /usr/src/zeromq-${ZMQ_VERSION}.tar.gz
+#
+# RUN cd /usr/src \
+#     && tar zxf zeromq-${ZMQ_VERSION}.tar.gz \
+#     && cd zeromq-${ZMQ_VERSION} \
+#     && ./configure \
+#     && make \
+#     && make install \
+#     && ldconfig \
+#     && cd / && rm -rf /usr/src/zeromq-${ZMQ_VERSION}
+#
+# RUN  echo "- done."
 
 RUN echo "Installing Nodejs and NPM"
 
@@ -68,7 +68,7 @@ COPY . /code
 WORKDIR /code
 
 RUN echo "Installing Node Libraries"
-RUN npm install
+RUN npm install --production
 
 RUN echo "Cleanup"
 RUN rm -r /tmp/*

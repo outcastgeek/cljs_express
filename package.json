@@ -2,6 +2,18 @@
   "name": "cljs_express",
   "version": "1.0.0",
   "description": "CLJS All the Things",
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "clojurescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/outcastgeek/cljs_express.git"
+  },
+  "engines": {
+    "node": "~0.12.7"
+  },
   "main": "run.js",
   "dependencies": {
     "express": "^4.13.3",
@@ -13,8 +25,9 @@
     "gulp": "^3.9.0"
   },
   "scripts": {
+    "start": "node run.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "outcastgeek",
-  "license": "ISC"
+  "license": "MIT"
 }
