@@ -104,6 +104,6 @@
 
 (defn static
   ([app path]
-   (use app (.static express path)))
+   (use app ((aget express "static") path)))
   ([app path mount]
-   (use app mount (.static express path))))
+   (use app mount ((aget express "static") path))))
