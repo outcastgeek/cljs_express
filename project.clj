@@ -11,26 +11,18 @@
                  [sablono "0.3.5" :exclusions [cljsjs/react]]
                  [prismatic/om-tools "0.3.12"]]
 
-  :npm {
-    :dependencies [[source-map-support "0.3.2"]
-                   [express "4.13.3"]
-                   ;[zmq "2.12.0"]
-                   ]
-  }
-
-  :plugins [[lein-cljsbuild "1.0.6"]
-            ;[lein-npm "0.6.1"]
-            ]
+  :plugins [[lein-cljsbuild "1.0.6"]]
 
   :source-paths ["src"]
 
   :cljsbuild {
-    :repl-listen-port 9000
+    ;:repl-listen-port 9000
     :builds {
              :cljs_express
              {
               :source-paths ["src-common" "src"]
-              :notify-command ["node" "run.js"] ;; << ADD THIS
+              ;:notify-command ["node" "run.js"] ;; << ADD THIS
+              ;:notify-command ["nodemon" "run.js"] ;; << ADD THIS
               :compiler {
                          :main cljs_express.core
                          :output-to "cljs_express.js"

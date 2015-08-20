@@ -13,6 +13,7 @@
             [:meta {:http-equiv "content-type" :content "text/html; charset=UTF-8"}]
             [:title (str "CLJS Express | " (:title data))]
             (html/include-css "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+            (html/include-css "/public/css/sample.css")
             ]
            [:body
             [:div {:class "container"}

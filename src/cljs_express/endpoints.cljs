@@ -29,7 +29,7 @@
                {:title "Bonjour"
                 :content (views/render-to-str
                            widget/raw-str-widget
-                           {:text "Hello world!!"})
+                           {:text "Hello world!!!!"})
                 }))
       ))
 
