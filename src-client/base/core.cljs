@@ -6,4 +6,4 @@
 
 (om/root
   widget/hello {}
-  {:target (.getElementById js/document "container")})
+  {:target (.getElementById js/document "app")})

@@ -5,7 +5,7 @@
 
 (enable-console-print!)
 
-(defn- do-template [data]
+(defn- default-template [data]
   (om/component
     (html [:html {:lang "en"}
            [:header
@@ -15,8 +15,13 @@
             (html/include-css "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
             ]
            [:body
-            [:div {:id "container" :class "container"
-                   :dangerouslySetInnerHTML {:__html (:content data)}}]
+            [:div {:class "container"}
+             [:div {:class "jumbotron"}
+              [:h1 "CLJS Express"]]
+             [:div {:class "row"}
+              [:div {:id "app"
+                     :class "col-lg-12"
+                     :dangerouslySetInnerHTML {:__html (:content data)}}]]]
             [:script {:type "text/javascript" :src "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"}]
             [:script {:type "text/javascript" :src "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"}]
             [:script {:type "text/javascript" :src (:script data)}]
@@ -28,24 +33,11 @@
     (om/build widget data)))
 
 (defn render
-  [widget data]
+  [tmpl data]
   (str
     "<!DOCTYPE html>"
-    (render-to-str
-      do-template {:title "SS Reacting"
-                   :content (render-to-str widget data)
-                   :script "/public/js/base.js"}
-      )))
-
-;(defn render
-;  [widget data]
-;  (str
-;    "<!DOCTYPE html>"
-;    (render-to-str
-;      do-template {:title "SS Reacting"
-;                   :content ""
-;                   :script "/public/js/base.js"}
-;      )))
+    (render-to-str tmpl data)
+    ))
 
 
 

@@ -11,13 +11,25 @@
   [req res]
   (-> res
       (ex/status 200)
-      (ex/send (views/render widget/hello {}))))
+      (ex/send (views/render
+                 views/default-template
+                 {:title "SS Reacting"
+                  :content (views/render-to-str widget/hello {})
+                  :script "/public/js/base.js"}))
+      ))
 
 (defn say-hello!
   [req res]
   (-> res
     (ex/status 200)
-    (ex/send (views/render widget/raw-str-widget {:text "Hello world!!"}))))
+    (ex/send (views/render
+               views/default-template
+               {:title "Bonjour"
+                :content (views/render-to-str
+                           widget/raw-str-widget
+                           {:text "Hello world!!"})
+                }))
+      ))
 
 (defn app-start
   [req res]

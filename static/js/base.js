@@ -8399,7 +8399,6 @@ function Ok() {
   return Ga(new W(null, 2, 5, Y, [React.createElement("hr", null), Vi("input", {type:"submit", value:Fi.c(b), className:"btn btn-default"})], null));
 }
 ;Fa();
-Fa();
 (function(b, a, c) {
   var d = null != c && (c.o & 64 || c.bb) ? Ud(le, c) : c, e = J(d, wi), g = J(d, Ei), h = J(d, ih), k = J(d, uh), l = J(d, oh), m = J(d, Dh), q = J(d, pi);
   if (!md(b)) {
@@ -8633,7 +8632,8 @@ Fa();
     return E(d, "home.comps.widget/t6802");
   });
   return new Nk(Pk, a, null);
-}, de, new r(null, 1, [wi, document.getElementById("container")], null));
+}, de, new r(null, 1, [wi, document.getElementById("app")], null));
+Fa();
 function Qk(b) {
   throw Error(Ud(C, b));
 }
