@@ -7,7 +7,7 @@
 
 (defn- do-template [data]
   (om/component
-    (html [:html {:lan "en"}
+    (html [:html {:lang "en"}
            [:header
             [:meta {:charset "utf-8"}]
             [:meta {:http-equiv "content-type" :content "text/html; charset=UTF-8"}]
@@ -42,13 +42,10 @@
 ;  (str
 ;    "<!DOCTYPE html>"
 ;    (render-to-str
-;      do-template "")))
+;      do-template {:title "SS Reacting"
+;                   :content ""
+;                   :script "/public/js/base.js"}
+;      )))
 
-;(defn render
-;  [widget data]
-;  (str
-;    "<!DOCTYPE html>"
-;    (render-to-str
-;      do-template (render-to-str widget data))))
 
 

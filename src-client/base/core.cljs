@@ -5,5 +5,5 @@
 (enable-console-print!)
 
 (om/root
-  (om/component
-    (widget/hello {})) {} {:target (.getElementById js/document "container")})
+  widget/hello {}
+  {:target (.getElementById js/document "container")})
