@@ -2,7 +2,7 @@
   (:require [cljs.nodejs :as nodejs]
             [util.os :as os]
             [express.sugar :as ex]
-            [cljs_express.views :as views]
+            [ui.templates :as tmpl]
             [home.comps.widget :as widget]))
 
 (nodejs/enable-util-print!)
@@ -11,11 +11,10 @@
   [req res]
   (-> res
       (ex/status 200)
-      (ex/send (views/render
-                 views/default-template
-                 {:widget-name "BaseLayout"
-                  :title "SS Reacting"
-                  :content (views/render-to-str
+      (ex/send (tmpl/render
+                 tmpl/default-template
+                 {:title "SS Reacting"
+                  :content (tmpl/render-to-str
                              widget/hello {})
                   :script "/public/js/base.js"}))
       ))
@@ -24,10 +23,10 @@
   [req res]
   (-> res
     (ex/status 200)
-    (ex/send (views/render
-               views/default-template
+    (ex/send (tmpl/render
+               tmpl/default-template
                {:title "Bonjour"
-                :content (views/render-to-str
+                :content (tmpl/render-to-str
                            widget/raw-str-widget
                            {:text "Hello world!!!!"})
                 }))

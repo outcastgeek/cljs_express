@@ -1962,7 +1962,7 @@ f.call = function() {
     a = this;
     return a.v.G ? a.v.G() : a.v.call(null);
   }
-  var S = null, S = function(S, ya, la, gb, Ia, pb, sb, Ab, Hb, Bb, cc, dc, Ib, vc, Ic, Ud, we, kf, og, Xh, rk, pg) {
+  var S = null, S = function(S, ya, la, gb, Ia, pb, sb, Ab, Hb, Bb, cc, dc, Ib, vc, Ic, Ud, we, lf, og, Xh, rk, pg) {
     switch(arguments.length) {
       case 1:
         return Ub.call(this, S);
@@ -1999,15 +1999,15 @@ f.call = function() {
       case 17:
         return g.call(this, S, ya, la, gb, Ia, pb, sb, Ab, Hb, Bb, cc, dc, Ib, vc, Ic, Ud, we);
       case 18:
-        return e.call(this, S, ya, la, gb, Ia, pb, sb, Ab, Hb, Bb, cc, dc, Ib, vc, Ic, Ud, we, kf);
+        return e.call(this, S, ya, la, gb, Ia, pb, sb, Ab, Hb, Bb, cc, dc, Ib, vc, Ic, Ud, we, lf);
       case 19:
-        return d.call(this, S, ya, la, gb, Ia, pb, sb, Ab, Hb, Bb, cc, dc, Ib, vc, Ic, Ud, we, kf, og);
+        return d.call(this, S, ya, la, gb, Ia, pb, sb, Ab, Hb, Bb, cc, dc, Ib, vc, Ic, Ud, we, lf, og);
       case 20:
-        return c.call(this, S, ya, la, gb, Ia, pb, sb, Ab, Hb, Bb, cc, dc, Ib, vc, Ic, Ud, we, kf, og, Xh);
+        return c.call(this, S, ya, la, gb, Ia, pb, sb, Ab, Hb, Bb, cc, dc, Ib, vc, Ic, Ud, we, lf, og, Xh);
       case 21:
-        return a.call(this, S, ya, la, gb, Ia, pb, sb, Ab, Hb, Bb, cc, dc, Ib, vc, Ic, Ud, we, kf, og, Xh, rk);
+        return a.call(this, S, ya, la, gb, Ia, pb, sb, Ab, Hb, Bb, cc, dc, Ib, vc, Ic, Ud, we, lf, og, Xh, rk);
       case 22:
-        return b.call(this, S, ya, la, gb, Ia, pb, sb, Ab, Hb, Bb, cc, dc, Ib, vc, Ic, Ud, we, kf, og, Xh, rk, pg);
+        return b.call(this, S, ya, la, gb, Ia, pb, sb, Ab, Hb, Bb, cc, dc, Ib, vc, Ic, Ud, we, lf, og, Xh, rk, pg);
     }
     throw Error("Invalid arity: " + arguments.length);
   };
@@ -4210,7 +4210,7 @@ gf.H = 4;
 function hf(b, a) {
   if ("number" !== typeof b) {
     throw Error([A("Assert failed: "), A(function() {
-      var a = V(jf, lf);
+      var a = V(jf, kf);
       return ef.h ? ef.h(a) : ef.call(null, a);
     }())].join(""));
   }
@@ -7892,7 +7892,7 @@ Si = new E(null, "unwrap-schema-form-key", "unwrap-schema-form-key", -300088791,
 "type", 1174270348), hj = new E(null, "eq", "eq", 1021992460, null), ij = new X(null, "init-state", "init-state", 1450863212), cf = new E(null, "validate", "validate", 1439230700, null), jj = new E(null, "pred", "pred", -727012372, null), kj = new E(null, "Any", "Any", 1277492269, null), lj = new X(null, "state", "state", -1988618099), mj = new E(null, "Regex", "Regex", 205914413, null), nj = new E(null, "input-schema", "input-schema", 1373647181, null), vh = new X(null, "fallback-impl", "fallback-impl", 
 -1501286995), oj = new E(null, "protocol", "protocol", -2001965651, null), pj = new E(null, "ks", "ks", -754231827, null), qj = new X(null, "val-schema", "val-schema", -2014773619), rj = new E(null, "keyword?", "keyword?", 1917797069, null), sj = new E(null, "meta12237", "meta12237", -815572275, null), tj = new X(null, "pending-state", "pending-state", 1525896973), uj = new X("schema.core", "missing", "schema.core/missing", 1420181325), Ba = new X(null, "flush-on-newline", "flush-on-newline", -151457939), 
 vj = new X(null, "componentWillUnmount", "componentWillUnmount", 1573788814), wj = new X(null, "componentWillReceiveProps", "componentWillReceiveProps", 559988974), xj = new E(null, "output-checker12229", "output-checker12229", -1907405106, null), yj = new E(null, "%", "%", -950237169, null), zj = new X(null, "ignore", "ignore", -1631542033), Aj = new X(null, "className", "className", -1983287057), Bj = new E(null, "Str", "Str", 907970895, null), Cj = new X(null, "k", "k", -2146297393), Dj = new E(null, 
-"maybe", "maybe", 1326133967, null), Ej = new E(null, "check", "check", -1428126865, null), Fj = new X(null, "shouldComponentUpdate", "shouldComponentUpdate", 1795750960), Gj = new E(null, "valid-opts?", "valid-opts?", 1000038576, null), Hj = new X(null, "style", "style", -496642736), Ij = new X(null, "textarea", "textarea", -650375824), Jj = new E(null, "or", "or", 1876275696, null), Kj = new E(null, "name", "name", -810760592, null), lf = new E(null, "n", "n", -2092305744, null), Lj = new X(null, 
+"maybe", "maybe", 1326133967, null), Ej = new E(null, "check", "check", -1428126865, null), Fj = new X(null, "shouldComponentUpdate", "shouldComponentUpdate", 1795750960), Gj = new E(null, "valid-opts?", "valid-opts?", 1000038576, null), Hj = new X(null, "style", "style", -496642736), Ij = new X(null, "textarea", "textarea", -650375824), Jj = new E(null, "or", "or", 1876275696, null), Kj = new E(null, "name", "name", -810760592, null), kf = new E(null, "n", "n", -2092305744, null), Lj = new X(null, 
 "option", "option", 65132272), Ca = new X(null, "readably", "readably", 1129599760), Mj = new E(null, "m", "m", -1021758608, null), Nj = new E(null, "IRenderProps", "IRenderProps", 2115139472, null), mh = new X(null, "more-marker", "more-marker", -14717935), Oj = new X(null, "optional?", "optional?", 1184638129), Pj = new X(null, "key-fn", "key-fn", -636154479), Qj = new E(null, "raw-str-widget", "raw-str-widget", 1772257713, null), Rj = new E(null, "meta10382", "meta10382", 1392913201, null), Sj = 
 new E(null, "input-schema12227", "input-schema12227", 525703025, null), Tj = new E(null, "compose-schemata", "compose-schemata", 918607729, null), Uj = new E("s", "Bool", "s/Bool", 195910545, null), Vj = new X(null, "for", "for", -1323786319), Wj = new E(null, "meta12359", "meta12359", -661143310, null), Xj = new X(null, "render", "render", -1408033454), Yj = new E(null, "some", "some", -310548046, null), Zj = new E(null, "nil?", "nil?", 1612038930, null), ak = new E(null, "hello", "hello", 1395506130, 
 null), bk = new E("s", "Schema", "s/Schema", -1305723789, null), ck = new X(null, "raw-arglists", "raw-arglists", -1511012109), dk = new E(null, "split-schema", "split-schema", 1859174771, null), ek = new X(null, "schemas", "schemas", 575070579), fk = new E(null, "instance?", "instance?", 1075939923, null), gk = new X(null, "previous-state", "previous-state", 1888227923), hk = new E(null, "re-find", "re-find", 1143444147, null), ik = new E(null, "not", "not", 1044554643, null), Fa = new X(null, "print-length", 
@@ -11763,6 +11763,7 @@ var bq = new T(null, 2, 5, U, [Cm(bm, O(Ei, new q(null, 1, [Z, Yh], null))), Cm(
 }(Sl, bm, bq, cq, dq);
 Ql(eq, Hm(bm, new T(null, 1, 5, U, [bq], null)));
 Ga();
+Ga();
 (function(b, a, c) {
   var d = null != c && (c.w & 64 || c.rb) ? Fe($e, c) : c, e = Fc(d, Ok), g = Fc(d, rl), h = Fc(d, Sh), k = Fc(d, ui), l = Fc(d, hi), m = Fc(d, Qi), p = Fc(d, Ek);
   if (!Ed(b)) {
@@ -11939,7 +11940,6 @@ Ga();
   }(r, a, w, x, B, G, K, c, d, d, e, g, h, k, l, m, p));
   return K();
 })(eq, Kd, new q(null, 1, [Ok, document.getElementById("app")], null));
-Ga();
 function fq(b) {
   throw Error(Fe(A, b));
 }
@@ -12083,6 +12083,7 @@ var kq = new q(null, 4, ["inst", function(b) {
 }], null);
 Ze || Ye.call(null, kq);
 Ze || Ye.call(null, null);
+Ga();
 Ga();
 ba("greet", function(b) {
   return [A("Hello "), A(b), A("!!!")].join("");

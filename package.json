@@ -18,11 +18,15 @@
   "dependencies": {
     "express": "^4.13.3",
     "logfmt": "^1.2.0",
+    "material-ui": "^0.10.4",
     "react": "^0.13.3",
+    "react-tap-event-plugin": "^0.1.7",
     "source-map-support": "^0.3.2"
   },
   "devDependencies": {
-    "gulp": "^3.9.0"
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.0.4",
+    "nodemon": "^1.4.1"
   },
   "scripts": {
     "start": "node run.js",
