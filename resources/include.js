@@ -4,4 +4,5 @@
 
 var React = require("react"),
     injectTapEventPlugin = require('react-tap-event-plugin'),
-    MaterialUI = require('material-ui');
+    MaterialUI = require('material-ui'),
+    XMLHttpRequest = require('xhr2');

@@ -1,7 +1,9 @@
 (ns ui.templates
   (:require [om.dom :as dom :include-macros true]
             [om.core :as om :include-macros true]
-            [sablono.core :as html :refer-macros [html]]))
+            [sablono.core :as html :refer-macros [html]]
+            [cljs.core.async :as async :refer [<! >! chan close! timeout]])
+  (:require-macros [cljs.core.async.macros :refer [go alt!]]))
 
 (enable-console-print!)
 
@@ -39,3 +41,8 @@
     "<!DOCTYPE html>"
     (render-to-str tmpl data)
     ))
+
+(defn render-async [resp-chan]
+  (go
+    (while true
+      (let []))))

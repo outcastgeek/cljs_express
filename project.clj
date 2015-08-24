@@ -9,7 +9,8 @@
                  [org.omcljs/om "0.9.0" :exclusions [cljsjs/react]]
                  [cljsjs/react-with-addons "0.13.3-0"]
                  [sablono "0.3.5" :exclusions [cljsjs/react]]
-                 [prismatic/om-tools "0.3.12"]]
+                 [prismatic/om-tools "0.3.12"]
+                 [cljs-http "0.1.37"]]
 
   :plugins [[lein-cljsbuild "1.0.6"]]
 
