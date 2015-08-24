@@ -45,10 +45,48 @@
               names (map :login body)]
           (prn status)
           (prn names)
-          ;(println "Going to Sleep for a bit!")
-          ;(<! (timeout 2000))
+          (println "Going to Sleep for a bit!")
+          (<! (timeout 2000))
           (println "Channeling names...")
           (>! users-chan names)))
+    (go (let [flush (fn [raw-str]
+                      (-> res
+                          (ex/status 200)
+                          (ex/send (tmpl/render
+                                     tmpl/default-template
+                                     {:title "Github Users"
+                                      :content (tmpl/render-to-str
+                                                 widget/raw-str-widget
+                                                 {:text raw-str})
+                                      }))
+                          ))]
+          (alt!
+            users-chan ([names] (flush (clojure.string/join "," names)))
+            (timeout 1000) (flush "Could not Fetch the Github Users!"))
+          ))
+    ))
+
+(defn check-weather
+  [req res]
+  (let [weather-chan (chan)]
+    (go (let [params req/params
+              city-query (aget params "city")
+              raw-resp (<! (http/get (str "http://api.openweathermap.org/data/2.5/weather?q=" city-query)))
+              response (js->clj raw-resp)
+              status (:status response)
+              city (-> response :body :name)
+              country (-> response :body :sys :country)
+              description (-> response :body :weather first :description)
+              temperature (-> response :body :main :temp)
+              weather-info [city country description temperature]]
+          (println (str "City Query: " city-query))
+          (println response)
+          (prn status)
+          (prn weather-info)
+          ;(println "Going to Sleep for a bit!")
+          ;(<! (timeout 2000))
+          (println "Channeling Weather Info...")
+          (>! weather-chan weather-info)))
     (go (let [flush (fn [raw-str]
                       (-> res
                           (ex/status 200)
@@ -61,8 +99,8 @@
                                       }))
                           ))]
           (alt!
-            users-chan ([names] (flush (clojure.string/join "," names)))
-            (timeout 1000) (flush "Could not Fetch the Github Users!"))
+            weather-chan ([names] (flush (clojure.string/join "," names)))
+            (timeout 1000) (flush (str "Could not Fetch the Weather Infor for: " city-query)))
           ))
     ))
 

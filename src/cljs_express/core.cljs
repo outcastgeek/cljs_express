@@ -10,6 +10,7 @@
   (ex/routes
     [:get "/" ep/say-hello!]
     [:get "/react" ep/render-widget]
+    [:get "/weather/:city" ep/check-weather]
     [:get "/github-users" ep/check-github-users]
     [:get "/_ah/start" ep/app-start]
     [:get "/_ah/health" ep/check-health]
