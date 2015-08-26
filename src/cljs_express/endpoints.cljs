@@ -35,18 +35,27 @@
                 }))
       ))
 
+(defn- handle-response [response grab-data-fn]
+  (let [status (:status response)]
+    (prn "Status: " status)
+    (condp = status
+      200 (grab-data-fn response)
+      403 ["Remote Service Denied Access"]
+      404 ["Could not Find Anything"]
+      500 ["Something Broke"])))
+
 (defn check-github-users
   [req res]
   (let [users-chan (chan)]
     (go (let [response (<! (http/get "https://api.github.com/users" {:with-credentials false}
                                      :query-params {:since 135}))
-              status (:status response)
-              body (:body response)
-              names (map :login body)]
-          (prn status)
-          (prn names)
-          (println "Going to Sleep for a bit!")
-          (<! (timeout 2000))
+              names (handle-response
+                      response
+                      (fn [resp]
+                        (map :login (:body resp))))]
+          (prn "Names: " names)
+          ;(println "Going to Sleep for a bit!")
+          ;(<! (timeout 2000))
           (println "Channeling names...")
           (>! users-chan names)))
     (go (let [flush (fn [raw-str]
@@ -73,15 +82,17 @@
               city-query (aget params "city")
               raw-resp (<! (http/get (str "http://api.openweathermap.org/data/2.5/weather?q=" city-query)))
               response (js->clj raw-resp)
-              status (:status response)
-              city (-> response :body :name)
-              country (-> response :body :sys :country)
-              description (-> response :body :weather first :description)
-              temperature (-> response :body :main :temp)
-              weather-info [city country description temperature]]
+              weather-info (handle-response
+                             response
+                             (fn [resp]
+                               (let [city (-> resp :body :name)
+                                     country (-> resp :body :sys :country)
+                                     description (-> resp :body :weather first :description)
+                                     temperature (-> resp :body :main :temp)]
+                                 [city country description temperature])
+                               ))]
           (println (str "City Query: " city-query))
           (println response)
-          (prn status)
           (prn weather-info)
           ;(println "Going to Sleep for a bit!")
           ;(<! (timeout 2000))

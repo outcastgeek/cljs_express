@@ -19492,55 +19492,6 @@ hello.foo.bar = {};
 hello.foo.bar.sum = function(a) {
   return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(cljs.core._PLUS_, 0, a);
 };
-cljs.nodejs = {};
-cljs.nodejs.require = require;
-cljs.nodejs.process = process;
-cljs.nodejs.enable_util_print_BANG_ = function() {
-  cljs.core._STAR_print_newline_STAR_ = !1;
-  cljs.core._STAR_print_fn_STAR_ = function() {
-    var a = function(a) {
-      return console.log.apply(console, cljs.core.into_array.cljs$core$IFn$_invoke$arity$1(a));
-    }, b = function(b) {
-      var d = null;
-      if (0 < arguments.length) {
-        for (var d = 0, e = Array(arguments.length - 0);d < e.length;) {
-          e[d] = arguments[d + 0], ++d;
-        }
-        d = new cljs.core.IndexedSeq(e, 0);
-      }
-      return a.call(this, d);
-    };
-    b.cljs$lang$maxFixedArity = 0;
-    b.cljs$lang$applyTo = function(b) {
-      b = cljs.core.seq(b);
-      return a(b);
-    };
-    b.cljs$core$IFn$_invoke$arity$variadic = a;
-    return b;
-  }();
-  cljs.core._STAR_print_err_fn_STAR_ = function() {
-    var a = function(a) {
-      return console.error.apply(console, cljs.core.into_array.cljs$core$IFn$_invoke$arity$1(a));
-    }, b = function(b) {
-      var d = null;
-      if (0 < arguments.length) {
-        for (var d = 0, e = Array(arguments.length - 0);d < e.length;) {
-          e[d] = arguments[d + 0], ++d;
-        }
-        d = new cljs.core.IndexedSeq(e, 0);
-      }
-      return a.call(this, d);
-    };
-    b.cljs$lang$maxFixedArity = 0;
-    b.cljs$lang$applyTo = function(b) {
-      b = cljs.core.seq(b);
-      return a(b);
-    };
-    b.cljs$core$IFn$_invoke$arity$variadic = a;
-    return b;
-  }();
-  return null;
-};
 goog.labs = {};
 goog.labs.userAgent = {};
 goog.labs.userAgent.util = {};
@@ -46010,6 +45961,55 @@ cljs_http.client.put.cljs$lang$applyTo = function(a) {
   a = cljs.core.next(a);
   return cljs_http.client.put.cljs$core$IFn$_invoke$arity$variadic(b, a);
 };
+cljs.nodejs = {};
+cljs.nodejs.require = require;
+cljs.nodejs.process = process;
+cljs.nodejs.enable_util_print_BANG_ = function() {
+  cljs.core._STAR_print_newline_STAR_ = !1;
+  cljs.core._STAR_print_fn_STAR_ = function() {
+    var a = function(a) {
+      return console.log.apply(console, cljs.core.into_array.cljs$core$IFn$_invoke$arity$1(a));
+    }, b = function(b) {
+      var d = null;
+      if (0 < arguments.length) {
+        for (var d = 0, e = Array(arguments.length - 0);d < e.length;) {
+          e[d] = arguments[d + 0], ++d;
+        }
+        d = new cljs.core.IndexedSeq(e, 0);
+      }
+      return a.call(this, d);
+    };
+    b.cljs$lang$maxFixedArity = 0;
+    b.cljs$lang$applyTo = function(b) {
+      b = cljs.core.seq(b);
+      return a(b);
+    };
+    b.cljs$core$IFn$_invoke$arity$variadic = a;
+    return b;
+  }();
+  cljs.core._STAR_print_err_fn_STAR_ = function() {
+    var a = function(a) {
+      return console.error.apply(console, cljs.core.into_array.cljs$core$IFn$_invoke$arity$1(a));
+    }, b = function(b) {
+      var d = null;
+      if (0 < arguments.length) {
+        for (var d = 0, e = Array(arguments.length - 0);d < e.length;) {
+          e[d] = arguments[d + 0], ++d;
+        }
+        d = new cljs.core.IndexedSeq(e, 0);
+      }
+      return a.call(this, d);
+    };
+    b.cljs$lang$maxFixedArity = 0;
+    b.cljs$lang$applyTo = function(b) {
+      b = cljs.core.seq(b);
+      return a(b);
+    };
+    b.cljs$core$IFn$_invoke$arity$variadic = a;
+    return b;
+  }();
+  return null;
+};
 var ui = {templates:{}};
 cljs.core.enable_console_print_BANG_();
 ui.templates.default_template = function ui$templates$default_template(b) {
@@ -46244,6 +46244,24 @@ cljs_express.endpoints.render_widget = function(a, b) {
 cljs_express.endpoints.say_hello_BANG_ = function(a, b) {
   return express.sugar.send(express.sugar.status(b, 200), ui.templates.render(ui.templates.default_template, new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "title", "title", 636505583), "Bonjour", new cljs.core.Keyword(null, "content", "content", 15833224), ui.templates.render_to_str(home.comps.widget.raw_str_widget, new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "text", "text", -1790561697), "Hello world!!!!"], null))], null)));
 };
+cljs_express.endpoints.handle_response = function(a, b) {
+  var c = (new cljs.core.Keyword(null, "status", "status", -1997798413)).cljs$core$IFn$_invoke$arity$1(a);
+  cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["Status: ", c], 0));
+  var d = cljs.core._EQ_;
+  if (cljs.core.truth_(d.cljs$core$IFn$_invoke$arity$2 ? d.cljs$core$IFn$_invoke$arity$2(200, c) : d.call(null, 200, c))) {
+    return b.cljs$core$IFn$_invoke$arity$1 ? b.cljs$core$IFn$_invoke$arity$1(a) : b.call(null, a);
+  }
+  if (cljs.core.truth_(d.cljs$core$IFn$_invoke$arity$2 ? d.cljs$core$IFn$_invoke$arity$2(403, c) : d.call(null, 403, c))) {
+    return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Remote Service Denied Access"], null);
+  }
+  if (cljs.core.truth_(d.cljs$core$IFn$_invoke$arity$2 ? d.cljs$core$IFn$_invoke$arity$2(404, c) : d.call(null, 404, c))) {
+    return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Could not Find Anything"], null);
+  }
+  if (cljs.core.truth_(d.cljs$core$IFn$_invoke$arity$2 ? d.cljs$core$IFn$_invoke$arity$2(500, c) : d.call(null, 500, c))) {
+    return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Something Broke"], null);
+  }
+  throw Error([cljs.core.str("No matching clause: "), cljs.core.str(c)].join(""));
+};
 cljs_express.endpoints.check_github_users = function(a, b) {
   var c = cljs.core.async.chan.cljs$core$IFn$_invoke$arity$0(), d = cljs.core.async.chan.cljs$core$IFn$_invoke$arity$1(1);
   cljs.core.async.impl.dispatch.run(function(a, b) {
@@ -46252,7 +46270,7 @@ cljs_express.endpoints.check_github_users = function(a, b) {
         return function(a, b, c) {
           return function() {
             var b = null, c = function() {
-              var a = [null, null, null, null, null, null, null, null, null, null, null, null, null];
+              var a = [null, null, null, null, null, null, null, null, null];
               a[0] = b;
               a[1] = 1;
               return a;
@@ -46294,22 +46312,25 @@ cljs_express.endpoints.check_github_users = function(a, b) {
             return b;
           }();
         }(function(a, b) {
-          return function(a) {
-            var c = a[1];
-            if (1 === c) {
-              var c = [new cljs.core.Keyword(null, "with-credentials", "with-credentials", -1163127235)], c = cljs.core.PersistentHashMap.fromArrays(c, [!1]), d = [new cljs.core.Keyword(null, "since", "since", 315379842)], d = cljs.core.PersistentHashMap.fromArrays(d, [135]), c = cljs_http.client.get.cljs$core$IFn$_invoke$arity$variadic("https://api.github.com/users", cljs.core.array_seq([c, new cljs.core.Keyword(null, "query-params", "query-params", 900640534), d], 0));
-              return cljs.core.async.impl.ioc_helpers.take_BANG_(a, 2, c);
+          return function(c) {
+            var d = c[1];
+            if (1 === d) {
+              var e = [new cljs.core.Keyword(null, "with-credentials", "with-credentials", -1163127235)], e = cljs.core.PersistentHashMap.fromArrays(e, [!1]), f = [new cljs.core.Keyword(null, "since", "since", 315379842)], f = cljs.core.PersistentHashMap.fromArrays(f, [135]), e = cljs_http.client.get.cljs$core$IFn$_invoke$arity$variadic("https://api.github.com/users", cljs.core.array_seq([e, new cljs.core.Keyword(null, "query-params", "query-params", 900640534), f], 0));
+              return cljs.core.async.impl.ioc_helpers.take_BANG_(c, 2, e);
             }
-            if (2 === c) {
-              var c = a[7], c = a[2], d = (new cljs.core.Keyword(null, "status", "status", -1997798413)).cljs$core$IFn$_invoke$arity$1(c), c = (new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(c), c = cljs.core.map.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null, "login", "login", 55217519), c), d = cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([d], 0)), e = cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([c], 
-              0)), f = cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["Going to Sleep for a bit!"], 0)), g = cljs.core.async.timeout(2E3);
-              a[7] = c;
-              a[8] = e;
-              a[9] = d;
-              a[10] = f;
-              return cljs.core.async.impl.ioc_helpers.take_BANG_(a, 3, g);
+            if (2 === d) {
+              var g = c[2], e = function() {
+                return function(a, b, c, d, e) {
+                  return function(a) {
+                    return cljs.core.map.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null, "login", "login", 55217519), (new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(a));
+                  };
+                }(g, g, d, a, b);
+              }(), e = cljs_express.endpoints.handle_response(g, e), f = cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["Names: ", e], 0)), h = cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["Channeling names..."], 0));
+              c[7] = h;
+              c[8] = f;
+              return cljs.core.async.impl.ioc_helpers.put_BANG_(c, 3, b, e);
             }
-            return 3 === c ? (c = a[7], d = a[2], e = cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["Channeling names..."], 0)), a[11] = e, a[12] = d, cljs.core.async.impl.ioc_helpers.put_BANG_(a, 4, b, c)) : 4 === c ? (c = a[2], cljs.core.async.impl.ioc_helpers.return_chan(a, c)) : null;
+            return 3 === d ? (e = c[2], cljs.core.async.impl.ioc_helpers.return_chan(c, e)) : null;
           };
         }(a, b), a, b);
       }(), d = function() {
@@ -46384,8 +46405,8 @@ cljs_express.endpoints.check_github_users = function(a, b) {
                   };
                 }(g, e, a, c);
               }(), h = cljs.core.async.timeout(1E3), t = new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [c, h], null);
-              d[9] = f;
               d[8] = h;
+              d[9] = f;
               return cljs.core.async.ioc_alts_BANG_(d, 2, t);
             }
             if (4 === e) {
@@ -46398,9 +46419,9 @@ cljs_express.endpoints.check_github_users = function(a, b) {
               return h = d[10], f = d[9], h = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(h, 0, null), h = clojure.string.join.cljs$core$IFn$_invoke$arity$2(",", h), f = f.cljs$core$IFn$_invoke$arity$1 ? f.cljs$core$IFn$_invoke$arity$1(h) : f.call(null, h), d[2] = f, d[1] = 5, new cljs.core.Keyword(null, "recur", "recur", -437573268);
             }
             if (2 === e) {
-              var h = d[10], f = d[7], h = d[2], f = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(h, 0, null), t = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(h, 1, null), u = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(t, c);
-              d[10] = h;
+              var f = d[7], h = d[10], h = d[2], f = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(h, 0, null), t = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(h, 1, null), u = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(t, c);
               d[7] = t;
+              d[10] = h;
               d[11] = f;
               d[1] = u ? 3 : 4;
               return new cljs.core.Keyword(null, "recur", "recur", -437573268);
@@ -46426,7 +46447,7 @@ cljs_express.endpoints.check_weather = function(a, b) {
         return function(a, b, c) {
           return function() {
             var b = null, c = function() {
-              var a = [null, null, null, null, null, null, null, null, null, null, null, null, null];
+              var a = [null, null, null, null, null, null, null, null, null, null, null, null];
               a[0] = b;
               a[1] = 1;
               return a;
@@ -46468,26 +46489,32 @@ cljs_express.endpoints.check_weather = function(a, b) {
             return b;
           }();
         }(function(b, c) {
-          return function(b) {
-            var d = b[1];
-            if (1 === d) {
-              var e = b[7], d = a.params.city, f = [cljs.core.str("http://api.openweathermap.org/data/2.5/weather?q\x3d"), cljs.core.str(d)].join(""), f = cljs_http.client.get(f);
-              b[7] = d;
-              return cljs.core.async.impl.ioc_helpers.take_BANG_(b, 2, f);
+          return function(d) {
+            var e = d[1];
+            if (1 === e) {
+              var f = d[7], g = a.params.city, h = [cljs.core.str("http://api.openweathermap.org/data/2.5/weather?q\x3d"), cljs.core.str(g)].join(""), h = cljs_http.client.get(h);
+              d[7] = g;
+              return cljs.core.async.impl.ioc_helpers.take_BANG_(d, 2, h);
             }
-            if (2 === d) {
-              var e = b[7], f = cljs.core.js__GT_clj.cljs$core$IFn$_invoke$arity$1(b[2]), d = (new cljs.core.Keyword(null, "status", "status", -1997798413)).cljs$core$IFn$_invoke$arity$1(f), g = (new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(f), g = (new cljs.core.Keyword(null, "name", "name", 1843675177)).cljs$core$IFn$_invoke$arity$1(g), h = (new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(f), h = (new cljs.core.Keyword(null, 
-              "sys", "sys", -592279430)).cljs$core$IFn$_invoke$arity$1(h), h = (new cljs.core.Keyword(null, "country", "country", 312965309)).cljs$core$IFn$_invoke$arity$1(h), k = (new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(f), k = (new cljs.core.Keyword(null, "weather", "weather", 1320452344)).cljs$core$IFn$_invoke$arity$1(k), k = cljs.core.first(k), k = (new cljs.core.Keyword(null, "description", "description", -1428560544)).cljs$core$IFn$_invoke$arity$1(k), 
-              v = (new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(f), v = (new cljs.core.Keyword(null, "main", "main", -2117802661)).cljs$core$IFn$_invoke$arity$1(v), v = (new cljs.core.Keyword(null, "temp", "temp", 1791541284)).cljs$core$IFn$_invoke$arity$1(v), g = new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [g, h, k, v], null), e = [cljs.core.str("City Query: "), cljs.core.str(e)].join(""), e = cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([e], 
-              0)), f = cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([f], 0)), d = cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([d], 0)), h = cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([g], 0)), k = cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["Channeling Weather Info..."], 0));
-              b[8] = d;
-              b[9] = e;
-              b[10] = h;
-              b[11] = k;
-              b[12] = f;
-              return cljs.core.async.impl.ioc_helpers.put_BANG_(b, 3, c, g);
+            if (2 === e) {
+              var f = d[7], t = d[2], u = cljs.core.js__GT_clj.cljs$core$IFn$_invoke$arity$1(t), g = function() {
+                return function(a, b, c, d, e, f, g, h, k, l) {
+                  return function(a) {
+                    var b = (new cljs.core.Keyword(null, "name", "name", 1843675177)).cljs$core$IFn$_invoke$arity$1((new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(a)), c = (new cljs.core.Keyword(null, "country", "country", 312965309)).cljs$core$IFn$_invoke$arity$1((new cljs.core.Keyword(null, "sys", "sys", -592279430)).cljs$core$IFn$_invoke$arity$1((new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(a))), d = (new cljs.core.Keyword(null, 
+                    "description", "description", -1428560544)).cljs$core$IFn$_invoke$arity$1(cljs.core.first((new cljs.core.Keyword(null, "weather", "weather", 1320452344)).cljs$core$IFn$_invoke$arity$1((new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(a))));
+                    a = (new cljs.core.Keyword(null, "temp", "temp", 1791541284)).cljs$core$IFn$_invoke$arity$1((new cljs.core.Keyword(null, "main", "main", -2117802661)).cljs$core$IFn$_invoke$arity$1((new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(a)));
+                    return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [b, c, d, a], null);
+                  };
+                }(a.params, f, t, u, f, t, u, e, b, c);
+              }(), g = cljs_express.endpoints.handle_response(u, g), h = [cljs.core.str("City Query: "), cljs.core.str(f)].join(""), h = cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([h], 0)), v = cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([u], 0)), w = cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([g], 0)), x = cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["Channeling Weather Info..."], 
+              0));
+              d[8] = x;
+              d[9] = w;
+              d[10] = h;
+              d[11] = v;
+              return cljs.core.async.impl.ioc_helpers.put_BANG_(d, 3, c, g);
             }
-            return 3 === d ? (d = b[2], cljs.core.async.impl.ioc_helpers.return_chan(b, d)) : null;
+            return 3 === e ? (g = d[2], cljs.core.async.impl.ioc_helpers.return_chan(d, g)) : null;
           };
         }(b, c), b, c);
       }(), h = function() {
