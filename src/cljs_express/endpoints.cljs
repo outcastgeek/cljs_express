@@ -47,17 +47,9 @@
 (defn check-github-users
   [req res]
   (let [users-chan (chan)]
-    (go (let [response (<! (http/get "https://api.github.com/users" {:with-credentials false}
-                                     :query-params {:since 135}))
-              names (handle-response
-                      response
-                      (fn [resp]
-                        (map :login (:body resp))))]
-          (prn "Names: " names)
-          ;(println "Going to Sleep for a bit!")
-          ;(<! (timeout 2000))
-          (println "Channeling names...")
-          (>! users-chan names)))
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;;;; Prepare for Rendering ;;;;
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     (go (let [flush (fn [raw-str]
                       (-> res
                           (ex/status 200)
@@ -73,11 +65,46 @@
             users-chan ([names] (flush (clojure.string/join "," names)))
             (timeout 1000) (flush "Could not Fetch the Github Users!"))
           ))
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;;;; Fetch and Parse Data  ;;;;
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    (go (let [response (<! (http/get "https://api.github.com/users" {:with-credentials false}
+                                     :query-params {:since 135}))
+              names (handle-response
+                      response
+                      (fn [resp]
+                        (map :login (:body resp))))]
+          (prn "Names: " names)
+          ;(println "Going to Sleep for a bit!")
+          ;(<! (timeout 2000))
+          (println "Channeling names...")
+          (>! users-chan names)))
     ))
 
 (defn check-weather
   [req res]
   (let [weather-chan (chan)]
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;;;; Prepare for Rendering ;;;;
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    (go (let [flush (fn [raw-str]
+                      (-> res
+                          (ex/status 200)
+                          (ex/send (tmpl/render
+                                     tmpl/default-template
+                                     {:title "Weather"
+                                      :content (tmpl/render-to-str
+                                                 widget/raw-str-widget
+                                                 {:text raw-str})
+                                      }))
+                          ))]
+          (alt!
+            weather-chan ([names] (flush (clojure.string/join "," names)))
+            (timeout 1000) (flush (str "Could not Fetch the Weather Infor for: " city-query)))
+          ))
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;;;; Fetch and Parse Data  ;;;;
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     (go (let [params req/params
               city-query (aget params "city")
               raw-resp (<! (http/get (str "http://api.openweathermap.org/data/2.5/weather?q=" city-query)))
@@ -98,21 +125,6 @@
           ;(<! (timeout 2000))
           (println "Channeling Weather Info...")
           (>! weather-chan weather-info)))
-    (go (let [flush (fn [raw-str]
-                      (-> res
-                          (ex/status 200)
-                          (ex/send (tmpl/render
-                                     tmpl/default-template
-                                     {:title "Weather"
-                                      :content (tmpl/render-to-str
-                                                 widget/raw-str-widget
-                                                 {:text raw-str})
-                                      }))
-                          ))]
-          (alt!
-            weather-chan ([names] (flush (clojure.string/join "," names)))
-            (timeout 1000) (flush (str "Could not Fetch the Weather Infor for: " city-query)))
-          ))
     ))
 
 (defn app-start
