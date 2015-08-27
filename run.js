@@ -8,7 +8,8 @@
 //goog.require("cljs.nodejscli");
 
 
-require("./cljs_express.js");
+require("./app.js");
+//require("./cljs_express.js");
 //require("./out/cljs_express.js");
 
 console.log("Server Started on ****:" + process.env.PORT);

@@ -14,6 +14,8 @@
 
   :plugins [[lein-cljsbuild "1.0.6"]]
 
+  :jvm-opts ^:replace ["-Xmx128M" "-Xms128m" "-server"]
+
   :source-paths ["src"]
 
   :cljsbuild {
@@ -26,7 +28,8 @@
               ;:notify-command ["nodemon" "run.js"] ;; << ADD THIS
               :compiler {
                          :main cljs_express.core
-                         :output-to "cljs_express.js"
+                         :output-to "app.js"
+                         ;:output-to "cljs_express.js"
                          ;:output-to "out/cljs_express.js"
                          ;:output-dir "out"
                          :preamble ["include.js"]

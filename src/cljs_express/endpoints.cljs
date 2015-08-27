@@ -1,41 +1,16 @@
 (ns cljs_express.endpoints
-  (:require-macros [cljs.core.async.macros :refer [go alt!]])
+  (:require-macros [cljs.core.async.macros :refer [alt! go]])
   (:require [cljs.nodejs :as nodejs]
             [util.os :as os]
             [express.sugar :as ex]
             [ui.templates :as tmpl]
             [home.comps.widget :as widget]
             [cljs-http.client :as http]
-            [cljs.core.async :as async :refer [<! >! chan close! timeout]]))
+            [cljs.core.async :as async :refer [<! put! chan close! timeout]]))
 
 (nodejs/enable-util-print!)
 
-(defn render-widget
-  [req res]
-  (-> res
-      (ex/status 200)
-      (ex/send (tmpl/render
-                 tmpl/default-template
-                 {:title "SS Reacting"
-                  :content (tmpl/render-to-str
-                             widget/hello {})
-                  :script "/public/js/base.js"}))
-      ))
-
-(defn say-hello!
-  [req res]
-  (-> res
-    (ex/status 200)
-    (ex/send (tmpl/render
-               tmpl/default-template
-               {:title "Bonjour"
-                :content (tmpl/render-to-str
-                           widget/raw-str-widget
-                           {:text "Hello world!!!!"})
-                }))
-      ))
-
-(defn- handle-response [response grab-data-fn]
+(defn handle-response [response grab-data-fn]
   (let [status (:status response)]
     (prn "Status: " status)
     (condp = status
@@ -44,104 +19,136 @@
       404 ["Could not Find Anything"]
       500 ["Something Broke"])))
 
+(defn send-response [response]
+  (let [{res :response
+         template :template
+         data :data} response]
+    (println "Responding with: " data)
+    (condp = template
+      :default (-> res
+                   (ex/status 200)
+                   (ex/send (tmpl/render
+                             tmpl/default-template data)))
+      :raw (-> res
+               (ex/status 200)
+               (ex/send (tmpl/render
+                         tmpl/raw-template data)))
+      (-> res
+          (ex/status 200)
+          (ex/send data))
+      )))
+
+(defn render-widget
+  [req res]
+  (send-response
+   {:response res
+    :template :default
+    :data {:title "SS Reacting"
+           :content (tmpl/render-to-str
+                     widget/hello {})
+           :script "/public/js/base.js"
+           }
+    }))
+
+(defn say-hello!
+  [req res]
+  (send-response
+   {:response res
+    :template :raw
+    :data {:title "Bonjour"
+           :content (tmpl/render-to-str
+                     widget/raw-str-widget
+                     {:text "Hello world!!!!"})
+           }
+    }))
+
 (defn check-github-users
   [req res]
-  (let [users-chan (chan)]
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;;; Prepare for Rendering ;;;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    (go (let [flush (fn [raw-str]
-                      (-> res
-                          (ex/status 200)
-                          (ex/send (tmpl/render
-                                     tmpl/default-template
-                                     {:title "Github Users"
-                                      :content (tmpl/render-to-str
-                                                 widget/raw-str-widget
-                                                 {:text raw-str})
-                                      }))
-                          ))]
-          (alt!
-            users-chan ([names] (flush (clojure.string/join "," names)))
-            (timeout 1000) (flush "Could not Fetch the Github Users!"))
-          ))
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;;; Fetch and Parse Data  ;;;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    (go (let [response (<! (http/get "https://api.github.com/users" {:with-credentials false}
-                                     :query-params {:since 135}))
-              names (handle-response
-                      response
-                      (fn [resp]
-                        (map :login (:body resp))))]
-          (prn "Names: " names)
-          ;(println "Going to Sleep for a bit!")
-          ;(<! (timeout 2000))
-          (println "Channeling names...")
-          (>! users-chan names)))
-    ))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Fetch, Parse, Render, or Timeout  ;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (go
+    (alt!
+      (http/get "https://api.github.com/users" {:with-credentials false}
+                :query-params {:since 135})
+      ([response]
+       (let [names (handle-response
+                    response
+                    (fn [resp]
+                      (map :login (:body resp))))]
+         (prn "Names: " names)
+         (send-response
+          {:response res
+           :template :default
+           :data {:title "Github Users"
+                  :content (tmpl/render-to-str
+                            widget/raw-str-widget
+                            {:text (clojure.string/join "," names)})
+                  }}))
+       )
+      (timeout 1000)
+      (send-response
+       {:response res
+        :template :default
+        :data {:title "Github Users"
+               :content "Could not Fetch the Github Users!"
+               }}))))
 
 (defn check-weather
   [req res]
-  (let [weather-chan (chan)]
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;;; Prepare for Rendering ;;;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    (go (let [flush (fn [raw-str]
-                      (-> res
-                          (ex/status 200)
-                          (ex/send (tmpl/render
-                                     tmpl/default-template
-                                     {:title "Weather"
-                                      :content (tmpl/render-to-str
-                                                 widget/raw-str-widget
-                                                 {:text raw-str})
-                                      }))
-                          ))]
-          (alt!
-            weather-chan ([names] (flush (clojure.string/join "," names)))
-            (timeout 1000) (flush (str "Could not Fetch the Weather Infor for: " city-query)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Fetch, Parse, Render, or Timeout  ;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (go (let [params (aget req "params")
+            city-query (aget params "city")]
+        (println (str "City Query: " city-query))
+        (alt!
+          (http/get (str "http://api.openweathermap.org/data/2.5/weather?q=" city-query))
+          ([raw-resp]
+           (let [weather-info (-> raw-resp
+                                  (js->clj)
+                                  (handle-response
+                                   (fn [resp]
+                                     (let [city (-> resp :body :name)
+                                           country (-> resp :body :sys :country)
+                                           description (-> resp :body :weather first :description)
+                                           temperature (-> resp :body :main :temp)]
+                                       [city country description temperature])
+                                     )))]
+             (prn weather-info)
+             (send-response
+              {:response res
+               :template :default
+               :data {:title "Weather"
+                      :content (tmpl/render-to-str
+                                widget/raw-str-widget
+                                {:text (clojure.string/join "," weather-info)})
+                      }})))
+          (timeout 1000)
+          (send-response
+           {:response res
+            :template :default
+            :data {:title "Weather"
+                   :content "Could not Fetch the Weather Info."
+                   }})
           ))
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;;; Fetch and Parse Data  ;;;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    (go (let [params req/params
-              city-query (aget params "city")
-              raw-resp (<! (http/get (str "http://api.openweathermap.org/data/2.5/weather?q=" city-query)))
-              response (js->clj raw-resp)
-              weather-info (handle-response
-                             response
-                             (fn [resp]
-                               (let [city (-> resp :body :name)
-                                     country (-> resp :body :sys :country)
-                                     description (-> resp :body :weather first :description)
-                                     temperature (-> resp :body :main :temp)]
-                                 [city country description temperature])
-                               ))]
-          (println (str "City Query: " city-query))
-          (println response)
-          (prn weather-info)
-          ;(println "Going to Sleep for a bit!")
-          ;(<! (timeout 2000))
-          (println "Channeling Weather Info...")
-          (>! weather-chan weather-info)))
-    ))
+      ))
 
 (defn app-start
   [req res]
-  (-> res
-    (ex/status 200)
-    (ex/send "Started")))
+  (send-response
+   {:response res
+    :data "Started"}))
 
 (defn check-health
   [req res]
-  (-> res
-    (ex/status 200)
-    (ex/send "Healthy!")))
+  (send-response
+   {:response res
+    :data "Healthy!"}))
 
 (defn app-stop
   [req res]
-  (-> res
-    (ex/status 200)
-    (ex/send "Stopping...")))
+  (send-response
+   {:response res
+    :data "Stopping..."}))
 

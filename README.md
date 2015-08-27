@@ -20,7 +20,11 @@
 
 > http://cljs-nusmods.pangyanhan.com/2014-2015/sem1/#ACC4611_ST=K1&ACC3614_ST=G1
 
+> http://dev.clojure.org/jira/browse/ASYNC-110
 
+> https://clojuredocs.org/clojure.core.async/alt!
+
+> https://clojuredocs.org/clojure.core/condp
 
 
 

@@ -36,11 +36,11 @@
   (let [app (router)]
     (reduce (fn [app [verb path handler]]
               (condp = verb
-                :all (.all app path handler)
-                :get (.get app path handler)
-                :post (.post app path handler)
-                :put (.put app path handler)
-                :delete (.delete app path handler)
+                :all (. app (all path handler))
+                :get (. app (get path handler))
+                :post (. app (post path handler))
+                :put (. app (put path handler))
+                :delete (. app (delete path handler))
                 app))
             app
             args)))
