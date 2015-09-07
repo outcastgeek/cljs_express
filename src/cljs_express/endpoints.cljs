@@ -24,19 +24,11 @@
          template :template
          data :data} response]
     (println "Responding with: " data)
-    (condp = template
-      :default (-> res
-                   (ex/status 200)
-                   (ex/send (tmpl/render
-                             tmpl/default-template data)))
-      :raw (-> res
-               (ex/status 200)
-               (ex/send (tmpl/render
-                         tmpl/raw-template data)))
-      (-> res
-          (ex/status 200)
-          (ex/send data))
-      )))
+    (-> res
+        (ex/status 200)
+        (ex/send (tmpl/render
+                   [template data])))
+    ))
 
 (defn render-widget
   [req res]
@@ -55,10 +47,10 @@
   (send-response
    {:response res
     :template :raw
-    :data {:title "Bonjour"
+    :data {:title "Bonjour!!"
            :content (tmpl/render-to-str
                      widget/raw-str-widget
-                     {:text "Hello world!!!!"})
+                     {:text "Hello world!!!"})
            }
     }))
 

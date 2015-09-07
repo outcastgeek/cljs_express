@@ -26,6 +26,9 @@
 
 > https://clojuredocs.org/clojure.core/condp
 
+> http://www.jneen.net/posts/2014-11-23-clojure-conj-variants-errata
+
+
 
 
 

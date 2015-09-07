@@ -1,5 +1,6 @@
 (ns ui.templates
-  (:require [om.dom :as dom :include-macros true]
+  (:require [cljs.core.match :refer-macros [match]]
+            [om.dom :as dom :include-macros true]
             [om.core :as om :include-macros true]
             [sablono.core :as html :refer-macros [html]]))
 
@@ -58,8 +59,17 @@
    (om/build widget data)))
 
 (defn render
-  [tmpl data]
-  (str
-   "<!DOCTYPE html>"
-   (render-to-str tmpl data)
-   ))
+  ([resp]
+    (match resp
+           [:default data]
+           (str
+             "<!DOCTYPE html>"
+             (render-to-str default-template data)
+             )
+           [:raw data]
+           (str
+             "<!DOCTYPE html>"
+             (render-to-str raw-template data)
+             )
+           [_ data] data)
+    ))
