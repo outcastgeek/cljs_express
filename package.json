@@ -17,8 +17,8 @@
   "main": "run.js",
   "dependencies": {
     "express": "^4.13.3",
-    "logfmt": "^1.2.0",
     "material-ui": "^0.10.4",
+    "morgan": "^1.6.1",
     "react": "^0.13.3",
     "react-tap-event-plugin": "^0.1.7",
     "source-map-support": "^0.3.2",

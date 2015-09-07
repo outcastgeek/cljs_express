@@ -59,17 +59,16 @@
    (om/build widget data)))
 
 (defn render
-  ([resp]
-    (match resp
-           [:default data]
-           (str
-             "<!DOCTYPE html>"
-             (render-to-str default-template data)
-             )
-           [:raw data]
-           (str
-             "<!DOCTYPE html>"
-             (render-to-str raw-template data)
-             )
-           [_ data] data)
-    ))
+  [resp]
+  (match resp
+         [:default data]
+         (str
+           "<!DOCTYPE html>"
+           (render-to-str default-template data)
+           )
+         [:raw data]
+         (str
+           "<!DOCTYPE html>"
+           (render-to-str raw-template data)
+           )
+         [_ data] data))

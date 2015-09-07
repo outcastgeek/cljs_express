@@ -20,7 +20,7 @@
 (defn -main []
   (-> (ex/app)
       (ex/static "static" "/public")
-      (ex/use (.requestLogger ex/logfmt))                      ; Logger
+      (ex/use (ex/logger "combined"))                      ; Logger
       (ex/use "/" routes)
       (ex/listen (if-let [PORT (os/env "PORT")] PORT 3333))))
 

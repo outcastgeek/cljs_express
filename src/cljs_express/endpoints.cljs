@@ -19,40 +19,31 @@
       404 ["Could not Find Anything"]
       500 ["Something Broke"])))
 
-(defn send-response [response]
-  (let [{res :response
-         template :template
-         data :data} response]
-    (println "Responding with: " data)
-    (-> res
-        (ex/status 200)
-        (ex/send (tmpl/render
-                   [template data])))
-    ))
-
 (defn render-widget
   [req res]
-  (send-response
-   {:response res
-    :template :default
-    :data {:title "SS Reacting"
-           :content (tmpl/render-to-str
-                     widget/hello {})
-           :script "/public/js/base.js"
-           }
-    }))
+  (-> res
+      (ex/status 200)
+      (ex/send (tmpl/render
+                 [:default
+                  {:title "SS Reacting"
+                   :content (tmpl/render-to-str
+                              widget/hello {})
+                   :script "/public/js/base.js"
+                   }]))
+      ))
 
 (defn say-hello!
   [req res]
-  (send-response
-   {:response res
-    :template :raw
-    :data {:title "Bonjour!!"
-           :content (tmpl/render-to-str
-                     widget/raw-str-widget
-                     {:text "Hello world!!!"})
-           }
-    }))
+  (-> res
+      (ex/status 200)
+      (ex/send (tmpl/render
+                 [:raw
+                  {:title "Bonjour!!"
+                   :content (tmpl/render-to-str
+                              widget/raw-str-widget
+                              {:text "Hello world!!!"})
+                   }]))
+      ))
 
 (defn check-github-users
   [req res]
@@ -69,22 +60,25 @@
                     (fn [resp]
                       (map :login (:body resp))))]
          (prn "Names: " names)
-         (send-response
-          {:response res
-           :template :default
-           :data {:title "Github Users"
-                  :content (tmpl/render-to-str
-                            widget/raw-str-widget
-                            {:text (clojure.string/join "," names)})
-                  }}))
-       )
+         (-> res
+             (ex/status 200)
+             (ex/send (tmpl/render
+                        [:default
+                         {:title "Github Users"
+                          :content (tmpl/render-to-str
+                                     widget/raw-str-widget
+                                     {:text (clojure.string/join "," names)})
+                          }]))
+             )))
       (timeout 1000)
-      (send-response
-       {:response res
-        :template :default
-        :data {:title "Github Users"
-               :content "Could not Fetch the Github Users!"
-               }}))))
+      (-> res
+          (ex/status 200)
+          (ex/send (tmpl/render
+                     [:default
+                      {:title "Github Users"
+                       :content "Could not Fetch the Github Users!"
+                       }])))
+      )))
 
 (defn check-weather
   [req res]
@@ -108,39 +102,48 @@
                                        [city country description temperature])
                                      )))]
              (prn weather-info)
-             (send-response
-              {:response res
-               :template :default
-               :data {:title "Weather"
-                      :content (tmpl/render-to-str
-                                widget/raw-str-widget
-                                {:text (clojure.string/join "," weather-info)})
-                      }})))
+             (-> res
+                 (ex/status 200)
+                 (ex/send (tmpl/render
+                            [:default
+                             {:title "Weather"
+                              :content (tmpl/render-to-str
+                                         widget/raw-str-widget
+                                         {:text (clojure.string/join "," weather-info)})
+                              }])))
+             ))
           (timeout 1000)
-          (send-response
-           {:response res
-            :template :default
-            :data {:title "Weather"
-                   :content "Could not Fetch the Weather Info."
-                   }})
+          (-> res
+              (ex/status 200)
+              (ex/send (tmpl/render
+                         [:default
+                          {:title "Weather"
+                           :content "Could not Fetch the Weather Info."
+                           }])))
           ))
       ))
 
 (defn app-start
   [req res]
-  (send-response
-   {:response res
-    :data "Started"}))
+  (-> res
+      (ex/status 200)
+      (ex/send (tmpl/render
+                 [:none "Started"]))
+      ))
 
 (defn check-health
   [req res]
-  (send-response
-   {:response res
-    :data "Healthy!"}))
+  (-> res
+      (ex/status 200)
+      (ex/send (tmpl/render
+                 [:none "Healthy!"]))
+      ))
 
 (defn app-stop
   [req res]
-  (send-response
-   {:response res
-    :data "Stopping..."}))
+  (-> res
+      (ex/status 200)
+      (ex/send (tmpl/render
+                 [:none "Stopping..."]))
+      ))
 

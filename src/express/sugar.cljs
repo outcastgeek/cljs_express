@@ -11,9 +11,9 @@
        :private true}
   express (nodejs/require "express"))
 
-(def ^{:doc "Global logfmt import."
+(def ^{:doc "Global logger import."
        :private true}
-  logfmt (nodejs/require "logfmt"))
+  logger (nodejs/require "morgan"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Constructors
