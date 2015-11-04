@@ -64,7 +64,7 @@
   (omnext/factory raw-template-ui))
 
 (defn- render-to-str [widget]
-  (js/React.renderToString widget))
+  (js/ReactDOMServer.renderToString widget))
 
 (defn render
   [resp]

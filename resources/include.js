@@ -3,9 +3,13 @@
  */
 
 var React = require("react"),
+    ReactDOM = require("react-dom"),
+    ReactDOMServer = require('react-dom/server'),
     injectTapEventPlugin = require('react-tap-event-plugin'),
-    MaterialUI = require('material-ui'),
     XMLHttpRequest = require('xhr2');
+
+// React Tap Plugin Setup
+injectTapEventPlugin();
 
 // Fixes for Core Async on NodeJs due to goog.global.*
 this.setTimeout = setTimeout;

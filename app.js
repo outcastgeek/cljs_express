@@ -4,9 +4,13 @@
  */
 
 var React = require("react"),
+    ReactDOM = require("react-dom"),
+    ReactDOMServer = require('react-dom/server'),
     injectTapEventPlugin = require('react-tap-event-plugin'),
-    MaterialUI = require('material-ui'),
     XMLHttpRequest = require('xhr2');
+
+// React Tap Plugin Setup
+injectTapEventPlugin();
 
 // Fixes for Core Async on NodeJs due to goog.global.*
 this.setTimeout = setTimeout;
@@ -20428,55 +20432,6 @@ goog.debug.RelativeTimeProvider.prototype.get = function() {
 };
 goog.debug.RelativeTimeProvider.getDefaultInstance = function() {
   return goog.debug.RelativeTimeProvider.defaultInstance_;
-};
-cljs.nodejs = {};
-cljs.nodejs.require = require;
-cljs.nodejs.process = process;
-cljs.nodejs.enable_util_print_BANG_ = function() {
-  cljs.core._STAR_print_newline_STAR_ = !1;
-  cljs.core._STAR_print_fn_STAR_ = function() {
-    var a = function(a) {
-      return console.log.apply(console, cljs.core.into_array.cljs$core$IFn$_invoke$arity$1(a));
-    }, b = function(b) {
-      var d = null;
-      if (0 < arguments.length) {
-        for (var d = 0, e = Array(arguments.length - 0);d < e.length;) {
-          e[d] = arguments[d + 0], ++d;
-        }
-        d = new cljs.core.IndexedSeq(e, 0);
-      }
-      return a.call(this, d);
-    };
-    b.cljs$lang$maxFixedArity = 0;
-    b.cljs$lang$applyTo = function(b) {
-      b = cljs.core.seq(b);
-      return a(b);
-    };
-    b.cljs$core$IFn$_invoke$arity$variadic = a;
-    return b;
-  }();
-  cljs.core._STAR_print_err_fn_STAR_ = function() {
-    var a = function(a) {
-      return console.error.apply(console, cljs.core.into_array.cljs$core$IFn$_invoke$arity$1(a));
-    }, b = function(b) {
-      var d = null;
-      if (0 < arguments.length) {
-        for (var d = 0, e = Array(arguments.length - 0);d < e.length;) {
-          e[d] = arguments[d + 0], ++d;
-        }
-        d = new cljs.core.IndexedSeq(e, 0);
-      }
-      return a.call(this, d);
-    };
-    b.cljs$lang$maxFixedArity = 0;
-    b.cljs$lang$applyTo = function(b) {
-      b = cljs.core.seq(b);
-      return a(b);
-    };
-    b.cljs$core$IFn$_invoke$arity$variadic = a;
-    return b;
-  }();
-  return null;
 };
 var clojure = {zip:{}};
 clojure.zip.zipper = function(a, b, c, d) {
@@ -44751,6 +44706,55 @@ cljs_http.client.put.cljs$lang$applyTo = function(a) {
   a = cljs.core.next(a);
   return cljs_http.client.put.cljs$core$IFn$_invoke$arity$variadic(b, a);
 };
+cljs.nodejs = {};
+cljs.nodejs.require = require;
+cljs.nodejs.process = process;
+cljs.nodejs.enable_util_print_BANG_ = function() {
+  cljs.core._STAR_print_newline_STAR_ = !1;
+  cljs.core._STAR_print_fn_STAR_ = function() {
+    var a = function(a) {
+      return console.log.apply(console, cljs.core.into_array.cljs$core$IFn$_invoke$arity$1(a));
+    }, b = function(b) {
+      var d = null;
+      if (0 < arguments.length) {
+        for (var d = 0, e = Array(arguments.length - 0);d < e.length;) {
+          e[d] = arguments[d + 0], ++d;
+        }
+        d = new cljs.core.IndexedSeq(e, 0);
+      }
+      return a.call(this, d);
+    };
+    b.cljs$lang$maxFixedArity = 0;
+    b.cljs$lang$applyTo = function(b) {
+      b = cljs.core.seq(b);
+      return a(b);
+    };
+    b.cljs$core$IFn$_invoke$arity$variadic = a;
+    return b;
+  }();
+  cljs.core._STAR_print_err_fn_STAR_ = function() {
+    var a = function(a) {
+      return console.error.apply(console, cljs.core.into_array.cljs$core$IFn$_invoke$arity$1(a));
+    }, b = function(b) {
+      var d = null;
+      if (0 < arguments.length) {
+        for (var d = 0, e = Array(arguments.length - 0);d < e.length;) {
+          e[d] = arguments[d + 0], ++d;
+        }
+        d = new cljs.core.IndexedSeq(e, 0);
+      }
+      return a.call(this, d);
+    };
+    b.cljs$lang$maxFixedArity = 0;
+    b.cljs$lang$applyTo = function(b) {
+      b = cljs.core.seq(b);
+      return a(b);
+    };
+    b.cljs$core$IFn$_invoke$arity$variadic = a;
+    return b;
+  }();
+  return null;
+};
 cljs.core.match = {};
 cljs.core.match.backtrack = Error();
 var ui = {templates:{}};
@@ -44761,14 +44765,14 @@ ui.templates.default_template_ui = function() {
   return this;
 };
 ui.templates.default_template_ui.prototype = goog.object.clone(React.Component.prototype);
-var x19508_19596 = ui.templates.default_template_ui.prototype;
-x19508_19596.componentWillUpdate = function(a) {
+var x19570_19658 = ui.templates.default_template_ui.prototype;
+x19570_19658.componentWillUpdate = function(a) {
   return function(a, c) {
     om.next.merge_pending_props_BANG_(this);
     return om.next.merge_pending_state_BANG_(this);
   };
-}(x19508_19596);
-x19508_19596.shouldComponentUpdate = function(a) {
+}(x19570_19658);
+x19570_19658.shouldComponentUpdate = function(a) {
   return function(a, c) {
     var d = cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(om.next.props(this), goog.object.get(a, "omcljs$value"));
     if (d) {
@@ -44777,31 +44781,31 @@ x19508_19596.shouldComponentUpdate = function(a) {
     d = this.state;
     return cljs.core.truth_(d) ? cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(goog.object.get(this.state, "omcljs$state"), goog.object.get(c, "omcljs$state")) : d;
   };
-}(x19508_19596);
-x19508_19596.componentWillUnmount = function(a) {
+}(x19570_19658);
+x19570_19658.componentWillUnmount = function(a) {
   return function() {
     var a = om.next.get_reconciler(this), c = (new cljs.core.Keyword(null, "config", "config", 994861415)).cljs$core$IFn$_invoke$arity$1(a), a = (new cljs.core.Keyword(null, "state", "state", -1988618099)).cljs$core$IFn$_invoke$arity$1(c), c = (new cljs.core.Keyword(null, "indexer", "indexer", -1774914315)).cljs$core$IFn$_invoke$arity$1(c);
     null != a && cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$variadic(a, cljs.core.update_in, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("om.next", "queries", "om.next/queries", -22717146)], null), cljs.core.dissoc, cljs.core.array_seq([this], 0));
     return null == c ? null : om.next.protocols.drop_component_BANG_(c, this);
   };
-}(x19508_19596);
-x19508_19596.componentDidUpdate = function(a) {
+}(x19570_19658);
+x19570_19658.componentDidUpdate = function(a) {
   return function(a, c) {
     return om.next.clear_prev_props_BANG_(this);
   };
-}(x19508_19596);
-x19508_19596.isMounted = function(a) {
+}(x19570_19658);
+x19570_19658.isMounted = function(a) {
   return function() {
     return cljs.core.boolean$(goog.object.getValueByKeys(this, "_reactInternalInstance", "_renderedComponent"));
   };
-}(x19508_19596);
-x19508_19596.componentWillMount = function(a) {
+}(x19570_19658);
+x19570_19658.componentWillMount = function(a) {
   return function() {
     var a = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(om.next.get_reconciler(this), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "config", "config", 994861415), new cljs.core.Keyword(null, "indexer", "indexer", -1774914315)], null));
     return null == a ? null : om.next.protocols.index_component_BANG_(a, this);
   };
-}(x19508_19596);
-x19508_19596.render = function(a) {
+}(x19570_19658);
+x19570_19658.render = function(a) {
   return function() {
     var a = om.next._STAR_reconciler_STAR_, c = om.next._STAR_depth_STAR_, d = om.next._STAR_shared_STAR_, e = om.next._STAR_instrument_STAR_, f = om.next._STAR_parent_STAR_;
     om.next._STAR_reconciler_STAR_ = om.next.get_reconciler(this);
@@ -44837,10 +44841,10 @@ x19508_19596.render = function(a) {
       om.next._STAR_parent_STAR_ = f, om.next._STAR_instrument_STAR_ = e, om.next._STAR_shared_STAR_ = d, om.next._STAR_depth_STAR_ = c, om.next._STAR_reconciler_STAR_ = a;
     }
   };
-}(x19508_19596);
+}(x19570_19658);
 ui.templates.default_template_ui.prototype.constructor = ui.templates.default_template_ui;
 ui.templates.default_template_ui.prototype.om$isComponent = !0;
-var x19594_19597 = ui.templates.default_template_ui, x19595_19598 = ui.templates.default_template_ui.prototype;
+var x19656_19659 = ui.templates.default_template_ui, x19657_19660 = ui.templates.default_template_ui.prototype;
 ui.templates.default_template_ui.cljs$lang$type = !0;
 ui.templates.default_template_ui.cljs$lang$ctorStr = "ui.templates/default-template-ui";
 ui.templates.default_template_ui.cljs$lang$ctorPrWriter = function(a, b, c) {
@@ -44853,14 +44857,14 @@ ui.templates.raw_template_ui = function() {
   return this;
 };
 ui.templates.raw_template_ui.prototype = goog.object.clone(React.Component.prototype);
-var x19603_19691 = ui.templates.raw_template_ui.prototype;
-x19603_19691.componentWillUpdate = function(a) {
+var x19665_19753 = ui.templates.raw_template_ui.prototype;
+x19665_19753.componentWillUpdate = function(a) {
   return function(a, c) {
     om.next.merge_pending_props_BANG_(this);
     return om.next.merge_pending_state_BANG_(this);
   };
-}(x19603_19691);
-x19603_19691.shouldComponentUpdate = function(a) {
+}(x19665_19753);
+x19665_19753.shouldComponentUpdate = function(a) {
   return function(a, c) {
     var d = cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(om.next.props(this), goog.object.get(a, "omcljs$value"));
     if (d) {
@@ -44869,31 +44873,31 @@ x19603_19691.shouldComponentUpdate = function(a) {
     d = this.state;
     return cljs.core.truth_(d) ? cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(goog.object.get(this.state, "omcljs$state"), goog.object.get(c, "omcljs$state")) : d;
   };
-}(x19603_19691);
-x19603_19691.componentWillUnmount = function(a) {
+}(x19665_19753);
+x19665_19753.componentWillUnmount = function(a) {
   return function() {
     var a = om.next.get_reconciler(this), c = (new cljs.core.Keyword(null, "config", "config", 994861415)).cljs$core$IFn$_invoke$arity$1(a), a = (new cljs.core.Keyword(null, "state", "state", -1988618099)).cljs$core$IFn$_invoke$arity$1(c), c = (new cljs.core.Keyword(null, "indexer", "indexer", -1774914315)).cljs$core$IFn$_invoke$arity$1(c);
     null != a && cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$variadic(a, cljs.core.update_in, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("om.next", "queries", "om.next/queries", -22717146)], null), cljs.core.dissoc, cljs.core.array_seq([this], 0));
     return null == c ? null : om.next.protocols.drop_component_BANG_(c, this);
   };
-}(x19603_19691);
-x19603_19691.componentDidUpdate = function(a) {
+}(x19665_19753);
+x19665_19753.componentDidUpdate = function(a) {
   return function(a, c) {
     return om.next.clear_prev_props_BANG_(this);
   };
-}(x19603_19691);
-x19603_19691.isMounted = function(a) {
+}(x19665_19753);
+x19665_19753.isMounted = function(a) {
   return function() {
     return cljs.core.boolean$(goog.object.getValueByKeys(this, "_reactInternalInstance", "_renderedComponent"));
   };
-}(x19603_19691);
-x19603_19691.componentWillMount = function(a) {
+}(x19665_19753);
+x19665_19753.componentWillMount = function(a) {
   return function() {
     var a = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(om.next.get_reconciler(this), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "config", "config", 994861415), new cljs.core.Keyword(null, "indexer", "indexer", -1774914315)], null));
     return null == a ? null : om.next.protocols.index_component_BANG_(a, this);
   };
-}(x19603_19691);
-x19603_19691.render = function(a) {
+}(x19665_19753);
+x19665_19753.render = function(a) {
   return function() {
     var a = om.next._STAR_reconciler_STAR_, c = om.next._STAR_depth_STAR_, d = om.next._STAR_shared_STAR_, e = om.next._STAR_instrument_STAR_, f = om.next._STAR_parent_STAR_;
     om.next._STAR_reconciler_STAR_ = om.next.get_reconciler(this);
@@ -44929,10 +44933,10 @@ x19603_19691.render = function(a) {
       om.next._STAR_parent_STAR_ = f, om.next._STAR_instrument_STAR_ = e, om.next._STAR_shared_STAR_ = d, om.next._STAR_depth_STAR_ = c, om.next._STAR_reconciler_STAR_ = a;
     }
   };
-}(x19603_19691);
+}(x19665_19753);
 ui.templates.raw_template_ui.prototype.constructor = ui.templates.raw_template_ui;
 ui.templates.raw_template_ui.prototype.om$isComponent = !0;
-var x19689_19692 = ui.templates.raw_template_ui, x19690_19693 = ui.templates.raw_template_ui.prototype;
+var x19751_19754 = ui.templates.raw_template_ui, x19752_19755 = ui.templates.raw_template_ui.prototype;
 ui.templates.raw_template_ui.cljs$lang$type = !0;
 ui.templates.raw_template_ui.cljs$lang$ctorStr = "ui.templates/raw-template-ui";
 ui.templates.raw_template_ui.cljs$lang$ctorPrWriter = function(a, b, c) {
@@ -44940,7 +44944,7 @@ ui.templates.raw_template_ui.cljs$lang$ctorPrWriter = function(a, b, c) {
 };
 ui.templates.raw_template = om.next.factory.cljs$core$IFn$_invoke$arity$1(ui.templates.raw_template_ui);
 ui.templates.render_to_str = function(a) {
-  return React.renderToString(a);
+  return ReactDOMServer.renderToString(a);
 };
 ui.templates.render = function(a) {
   try {
@@ -45088,10 +45092,10 @@ express.sugar.listen = function(a) {
   }
 };
 express.sugar.listen.cljs$core$IFn$_invoke$arity$2 = function(a, b) {
-  return a.listen(b);
+  return a.listen(b, "0.0.0.0");
 };
 express.sugar.listen.cljs$core$IFn$_invoke$arity$3 = function(a, b, c) {
-  return a.listen(b, c);
+  return a.listen(b, "0.0.0.0", c);
 };
 express.sugar.listen.cljs$lang$maxFixedArity = 3;
 express.sugar.set = function(a, b, c) {
@@ -45168,7 +45172,7 @@ cljs_express.endpoints.handle_response = function(a, b) {
     return b.cljs$core$IFn$_invoke$arity$1 ? b.cljs$core$IFn$_invoke$arity$1(a) : b.call(null, a);
   }
   if (cljs.core.truth_(d.cljs$core$IFn$_invoke$arity$2 ? d.cljs$core$IFn$_invoke$arity$2(401, c) : d.call(null, 401, c))) {
-    return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Ouch!!"], null);
+    return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Ouch!!!!"], null);
   }
   if (cljs.core.truth_(d.cljs$core$IFn$_invoke$arity$2 ? d.cljs$core$IFn$_invoke$arity$2(403, c) : d.call(null, 403, c))) {
     return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Remote Service Denied Access"], null);
@@ -45258,19 +45262,19 @@ cljs_express.endpoints.check_github_users = function(a, b) {
               return cljs.core.async.ioc_alts_BANG_(c, 2, r);
             }
             if (4 === d) {
-              return p = c[9], e = c[7], f = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(e, p), c[1] = f ? 6 : 7, new cljs.core.Keyword(null, "recur", "recur", -437573268);
+              return e = c[7], p = c[9], f = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(e, p), c[1] = f ? 6 : 7, new cljs.core.Keyword(null, "recur", "recur", -437573268);
             }
             if (6 === d) {
               return f = express.sugar.status(b, 200), q = cljs.core.PersistentVector.EMPTY_NODE, r = [new cljs.core.Keyword(null, "title", "title", 636505583), new cljs.core.Keyword(null, "content", "content", 15833224)], r = cljs.core.PersistentHashMap.fromArrays(r, ["Github Users", "Could not Fetch the Github Users!"]), r = [new cljs.core.Keyword(null, "default", "default", -1987822328), r], q = new cljs.core.PersistentVector(null, 2, 5, q, r, null), q = ui.templates.render(q), f = express.sugar.send(f, 
               q), c[2] = f, c[1] = 8, new cljs.core.Keyword(null, "recur", "recur", -437573268);
             }
             if (3 === d) {
-              var n = c[8], t = c[10], u = c[11], p = c[9], e = c[7], v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(u, 0, null), f = function() {
+              var t = c[10], u = c[11], e = c[7], n = c[8], p = c[9], v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(t, 0, null), f = function() {
                 return function(a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, t) {
                   return function(a) {
                     return cljs.core.map.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null, "login", "login", 55217519), (new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(a));
                   };
-                }(n, p, u, t, e, u, u, v, n, t, u, p, e, v, d, a);
+                }(n, p, t, u, e, t, t, v, t, u, e, n, p, v, d, a);
               }(), w = cljs_express.endpoints.handle_response(v, f), f = cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["Names: ", w], 0)), q = express.sugar.status(b, 200), r = cljs.core.PersistentVector.EMPTY_NODE, x = [new cljs.core.Keyword(null, "title", "title", 636505583), new cljs.core.Keyword(null, "content", "content", 15833224)], y = [new cljs.core.Keyword(null, "text", "text", -1790561697)], w = [clojure.string.join.cljs$core$IFn$_invoke$arity$2(",", w)], y = cljs.core.PersistentHashMap.fromArrays(y, 
               w), y = ["Github Users", home.comps.widget.raw_str_widget.cljs$core$IFn$_invoke$arity$1 ? home.comps.widget.raw_str_widget.cljs$core$IFn$_invoke$arity$1(y) : home.comps.widget.raw_str_widget.call(null, y)], x = cljs.core.PersistentHashMap.fromArrays(x, y), x = [new cljs.core.Keyword(null, "default", "default", -1987822328), x], r = new cljs.core.PersistentVector(null, 2, 5, r, x, null), r = ui.templates.render(r), q = express.sugar.send(q, r);
               c[12] = f;
@@ -45278,7 +45282,7 @@ cljs_express.endpoints.check_github_users = function(a, b) {
               c[1] = 5;
               return new cljs.core.Keyword(null, "recur", "recur", -437573268);
             }
-            return 2 === d ? (n = c[8], u = c[11], e = c[7], f = c[2], t = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(f, 0, null), q = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(f, 1, null), r = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(q, n), c[10] = t, c[11] = f, c[7] = q, c[1] = r ? 3 : 4, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 11 === d ? (f = c[2], c[2] = f, c[1] = 8, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 9 === d ? (t = c[10], c[2] = t, c[1] = 
+            return 2 === d ? (t = c[10], e = c[7], n = c[8], f = c[2], u = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(f, 0, null), q = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(f, 1, null), r = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(q, n), c[10] = f, c[11] = u, c[7] = q, c[1] = r ? 3 : 4, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 11 === d ? (f = c[2], c[2] = f, c[1] = 8, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 9 === d ? (u = c[11], c[2] = u, c[1] = 
             11, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 5 === d ? (f = c[2], cljs.core.async.impl.ioc_helpers.return_chan(c, f)) : 10 === d ? (c[2] = null, c[1] = 11, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 8 === d ? (f = c[2], c[2] = f, c[1] = 5, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : null;
           };
         }(a), a);
@@ -45352,21 +45356,21 @@ cljs_express.endpoints.check_weather = function(a, b) {
             if (1 === e) {
               var n = d[8], p = d[9], q = d[10], r = d[11], l = a.params, t = l.city, u = [cljs.core.str("City Query: "), cljs.core.str(t)].join(""), u = cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([u], 0)), v = [cljs.core.str("http://api.openweathermap.org/data/2.5/weather?q\x3d"), cljs.core.str(t)].join(""), v = cljs_http.client.get(v), w = cljs.core.async.timeout(1E3), x = new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [v, w], null);
               d[8] = l;
-              d[9] = v;
               d[12] = u;
-              d[10] = t;
-              d[11] = w;
+              d[9] = t;
+              d[10] = w;
+              d[11] = v;
               return cljs.core.async.ioc_alts_BANG_(d, 2, x);
             }
             if (4 === e) {
-              return f = d[7], r = d[11], l = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(f, r), d[1] = l ? 6 : 7, new cljs.core.Keyword(null, "recur", "recur", -437573268);
+              return q = d[10], f = d[7], l = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(f, q), d[1] = l ? 6 : 7, new cljs.core.Keyword(null, "recur", "recur", -437573268);
             }
             if (6 === e) {
               return l = express.sugar.status(b, 200), t = cljs.core.PersistentVector.EMPTY_NODE, u = [new cljs.core.Keyword(null, "title", "title", 636505583), new cljs.core.Keyword(null, "content", "content", 15833224)], u = cljs.core.PersistentHashMap.fromArrays(u, ["Weather", "Could not Fetch the Weather Info."]), u = [new cljs.core.Keyword(null, "default", "default", -1987822328), u], t = new cljs.core.PersistentVector(null, 2, 5, t, u, null), t = ui.templates.render(t), l = express.sugar.send(l, 
               t), d[2] = l, d[1] = 8, new cljs.core.Keyword(null, "recur", "recur", -437573268);
             }
             if (3 === e) {
-              var y = d[13], n = d[8], p = d[9], E = d[14], f = d[7], q = d[10], r = d[11], A = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(y, 0, null), T = cljs.core.js__GT_clj.cljs$core$IFn$_invoke$arity$1(A), l = function() {
+              var n = d[8], y = d[13], p = d[9], E = d[14], q = d[10], r = d[11], f = d[7], A = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(y, 0, null), T = cljs.core.js__GT_clj.cljs$core$IFn$_invoke$arity$1(A), l = function() {
                 return function(a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, t, u, v, w, x, y) {
                   return function(a) {
                     var b = (new cljs.core.Keyword(null, "name", "name", 1843675177)).cljs$core$IFn$_invoke$arity$1((new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(a)), c = (new cljs.core.Keyword(null, "country", "country", 312965309)).cljs$core$IFn$_invoke$arity$1((new cljs.core.Keyword(null, "sys", "sys", -592279430)).cljs$core$IFn$_invoke$arity$1((new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(a))), d = (new cljs.core.Keyword(null, 
@@ -45374,7 +45378,7 @@ cljs_express.endpoints.check_weather = function(a, b) {
                     a = (new cljs.core.Keyword(null, "temp", "temp", 1791541284)).cljs$core$IFn$_invoke$arity$1((new cljs.core.Keyword(null, "main", "main", -2117802661)).cljs$core$IFn$_invoke$arity$1((new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(a)));
                     return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [b, c, d, a], null);
                   };
-                }(q, f, n, p, y, y, E, A, r, y, y, n, p, E, f, q, r, A, T, e, c);
+                }(f, y, q, p, n, r, y, E, A, y, n, y, p, E, q, r, f, A, T, e, c);
               }(), x = cljs_express.endpoints.handle_response(T, l), l = cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([x], 0)), t = express.sugar.status(b, 200), u = cljs.core.PersistentVector.EMPTY_NODE, v = [new cljs.core.Keyword(null, "title", "title", 636505583), new cljs.core.Keyword(null, "content", "content", 15833224)], w = [new cljs.core.Keyword(null, "text", "text", -1790561697)], x = [clojure.string.join.cljs$core$IFn$_invoke$arity$2(",", x)], w = cljs.core.PersistentHashMap.fromArrays(w, 
               x), w = ["Weather", home.comps.widget.raw_str_widget.cljs$core$IFn$_invoke$arity$1 ? home.comps.widget.raw_str_widget.cljs$core$IFn$_invoke$arity$1(w) : home.comps.widget.raw_str_widget.call(null, w)], v = cljs.core.PersistentHashMap.fromArrays(v, w), v = [new cljs.core.Keyword(null, "default", "default", -1987822328), v], u = new cljs.core.PersistentVector(null, 2, 5, u, v, null), u = ui.templates.render(u), t = express.sugar.send(t, u);
               d[15] = l;
@@ -45382,7 +45386,7 @@ cljs_express.endpoints.check_weather = function(a, b) {
               d[1] = 5;
               return new cljs.core.Keyword(null, "recur", "recur", -437573268);
             }
-            return 2 === e ? (y = d[13], p = d[9], f = d[7], l = d[2], E = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(l, 0, null), t = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(l, 1, null), u = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(t, p), d[13] = l, d[14] = E, d[7] = t, d[1] = u ? 3 : 4, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 11 === e ? (l = d[2], d[2] = l, d[1] = 8, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 9 === e ? (E = d[14], d[2] = E, d[1] = 
+            return 2 === e ? (y = d[13], r = d[11], f = d[7], l = d[2], E = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(l, 0, null), t = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(l, 1, null), u = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(t, r), d[13] = l, d[14] = E, d[7] = t, d[1] = u ? 3 : 4, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 11 === e ? (l = d[2], d[2] = l, d[1] = 8, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 9 === e ? (E = d[14], d[2] = E, d[1] = 
             11, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 5 === e ? (l = d[2], cljs.core.async.impl.ioc_helpers.return_chan(d, l)) : 10 === e ? (d[2] = null, d[1] = 11, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 8 === e ? (l = d[2], d[2] = l, d[1] = 5, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : null;
           };
         }(c), c);

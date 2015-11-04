@@ -71,9 +71,9 @@
 (defn listen
   "Shortcut for start http server."
   ([app port]
-   (.listen app port))
+   (.listen app port "0.0.0.0"))
   ([app port callback]
-   (.listen app port callback)))
+   (.listen app port "0.0.0.0" callback)))
 
 (defn set
   [app key value]
