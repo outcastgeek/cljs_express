@@ -15,6 +15,7 @@
     (prn "Status: " status)
     (condp = status
       200 (grab-data-fn response)
+      401 ["Ouch!!"]
       403 ["Remote Service Denied Access"]
       404 ["Could not Find Anything"]
       500 ["Something Broke"])))
@@ -24,12 +25,11 @@
   (-> res
       (ex/status 200)
       (ex/send (tmpl/render
-                 [:default
-                  {:title "SS Reacting"
-                   :content (tmpl/render-to-str
-                              widget/hello {})
-                   :script "/public/js/base.js"
-                   }]))
+                [:default
+                 {:title "SS Reacting"
+                  :content (widget/hello {:upper-bound 8})
+                  :script "/public/js/base.js"
+                  }]))
       ))
 
 (defn say-hello!
@@ -39,9 +39,7 @@
       (ex/send (tmpl/render
                  [:raw
                   {:title "Bonjour!!"
-                   :content (tmpl/render-to-str
-                              widget/raw-str-widget
-                              {:text "Hello world!!!"})
+                   :content (widget/raw-str-widget {:text "Hello world!!!"})
                    }]))
       ))
 
@@ -65,9 +63,7 @@
              (ex/send (tmpl/render
                         [:default
                          {:title "Github Users"
-                          :content (tmpl/render-to-str
-                                     widget/raw-str-widget
-                                     {:text (clojure.string/join "," names)})
+                          :content (widget/raw-str-widget {:text (clojure.string/join "," names)})
                           }]))
              )))
       (timeout 1000)
@@ -107,9 +103,7 @@
                  (ex/send (tmpl/render
                             [:default
                              {:title "Weather"
-                              :content (tmpl/render-to-str
-                                         widget/raw-str-widget
-                                         {:text (clojure.string/join "," weather-info)})
+                              :content (widget/raw-str-widget {:text (clojure.string/join "," weather-info)})
                               }])))
              ))
           (timeout 1000)
@@ -123,6 +117,7 @@
           ))
       ))
 
+;; Application LifeCycle
 (defn app-start
   [req res]
   (-> res

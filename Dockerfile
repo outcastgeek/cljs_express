@@ -1,67 +1,33 @@
 # Dockerfile for running Nodejs Code
 
-FROM ubuntu:15.04
+FROM alpine:3.2
 
 MAINTAINER outcastgeek <outcastgeek+docker@gmail.com>
 
-RUN echo "Running apt-get update"
-RUN apt-get update --fix-missing
-RUN echo "- done."
+ENV VERSION=v5.0.0 NPM_VERSION=3
 
-RUN echo "Installing Essential Tools"
-RUN apt-get install -y runit locales \
-                       curl wget git \
-		                   build-essential \
-		                   ca-certificates \
-		                   libncurses5-dev \
-		                   openssl libssl-dev \
-		                   fop xsltproc \
-                       unixodbc-dev pkg-config \
-                       autoconf automake
-RUN echo "- done."
+ENV CONFIG_FLAGS="--fully-static" DEL_PKGS="libgcc libstdc++" RM_DIRS=/usr/include
 
-# RUN echo "Installing SODIUM ..."
-#
-# ENV SODIUM_VERSION 1.0.3
-#
-# RUN wget https://download.libsodium.org/libsodium/releases/libsodium-${SODIUM_VERSION}.tar.gz -O  /usr/src/libsodium-${SODIUM_VERSION}.tar.gz
-#
-# RUN cd /usr/src \
-#     && tar zxf libsodium-${SODIUM_VERSION}.tar.gz \
-#     && cd libsodium-${SODIUM_VERSION} \
-#     && ./configure \
-#     && make \
-#     && make install \
-#     && cd / && rm -rf /usr/src/libsodium-${SODIUM_VERSION}
-#
-# RUN  echo "- done."
-#
-# RUN echo "Installing ZeroMQ ..."
-#
-# ENV ZMQ_VERSION 4.1.2
-#
-# RUN wget http://download.zeromq.org/zeromq-${ZMQ_VERSION}.tar.gz -O  /usr/src/zeromq-${ZMQ_VERSION}.tar.gz
-#
-# RUN cd /usr/src \
-#     && tar zxf zeromq-${ZMQ_VERSION}.tar.gz \
-#     && cd zeromq-${ZMQ_VERSION} \
-#     && ./configure \
-#     && make \
-#     && make install \
-#     && ldconfig \
-#     && cd / && rm -rf /usr/src/zeromq-${ZMQ_VERSION}
-#
-# RUN  echo "- done."
+#ENV CONFIG_FLAGS="--fully-static --without-npm" DEL_PKGS="libgcc libstdc++" RM_DIRS=/usr/include
 
 RUN echo "Installing Nodejs and NPM"
 
-ENV NODE_VERSION v0.12.7
-
-RUN mkdir /nodejs && curl http://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64.tar.gz | tar xvzf - -C /nodejs --strip-components=1
-
-RUN echo "Add Node.js installation to PATH, and set"
-
-ENV PATH $PATH:/nodejs/bin
+RUN apk add --update curl make gcc g++ python linux-headers paxctl libgcc libstdc++ && \
+  curl -sSL https://nodejs.org/dist/${VERSION}/node-${VERSION}.tar.gz | tar -xz && \
+  cd /node-${VERSION} && \
+  ./configure --prefix=/usr ${CONFIG_FLAGS} && \
+  make -j$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) && \
+  make install && \
+  paxctl -cm /usr/bin/node && \
+  cd / && \
+  if [ -x /usr/bin/npm ]; then \
+    npm install -g npm@${NPM_VERSION} && \
+    find /usr/lib/node_modules/npm -name test -o -name .bin -type d | xargs rm -rf; \
+  fi && \
+  apk del curl make gcc g++ python linux-headers paxctl ${DEL_PKGS} && \
+  rm -rf /etc/ssl /node-${VERSION} ${RM_DIRS} \
+    /usr/share/man /tmp/* /var/cache/apk/* /root/.npm /root/.node-gyp \
+    /usr/lib/node_modules/npm/man /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html
 
 COPY . /code
 
@@ -75,13 +41,4 @@ RUN rm -r /tmp/*
 
 RUN echo "- done."
 
-EXPOSE 8080
-
-# CMD ["/bin/bash"]
-# CMD ["node", "run.js"]
-
-RUN echo "Add Services"
-ADD app.service /etc/service/app/run
-RUN echo "- All Good!!!!"
-
-CMD ["/usr/bin/runsvdir", "/etc/service"]
+CMD ["npm", "start", "--production"]

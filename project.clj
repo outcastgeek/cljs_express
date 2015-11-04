@@ -1,17 +1,16 @@
 (defproject cljs_express "0.1.0-SNAPSHOT"
-  :description "FIXME: write this!"
-  :url "http://example.com/FIXME"
+  :description "Isomorphic Clojurescript Application"
+  :url "http://outcastgeek.com"
+  :license {:name "Eclipse"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
 
   :dependencies [[org.clojure/clojure "1.7.0"]
-                 [org.clojure/clojurescript "1.7.48"]
+                 [org.clojure/clojurescript "1.7.145"]
                  [org.clojure/core.typed "0.3.11"]
                  [org.clojure/core.match "0.3.0-alpha4"]
-                 [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [com.cognitect/transit-cljs "0.8.220"]
-                 [org.omcljs/om "0.9.0" :exclusions [cljsjs/react]]
-                 [cljsjs/react-with-addons "0.13.3-0"]
-                 [sablono "0.3.5" :exclusions [cljsjs/react]]
-                 [prismatic/om-tools "0.3.12"]
+                 [org.omcljs/om "1.0.0-alpha14"]
+                 [sablono "0.3.6" :exclusions [cljsjs/react]]
                  [cljs-http "0.1.37"]]
 
   :plugins [[lein-cljsbuild "1.0.6"]]
