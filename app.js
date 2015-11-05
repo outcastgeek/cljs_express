@@ -35009,14 +35009,14 @@ home.comps.widget.raw_str_widget_ui = function() {
   return this;
 };
 home.comps.widget.raw_str_widget_ui.prototype = goog.object.clone(React.Component.prototype);
-var x25998_26013 = home.comps.widget.raw_str_widget_ui.prototype;
-x25998_26013.componentWillUpdate = function(a) {
+var x37506_37521 = home.comps.widget.raw_str_widget_ui.prototype;
+x37506_37521.componentWillUpdate = function(a) {
   return function(a, c) {
     om.next.merge_pending_props_BANG_(this);
     return om.next.merge_pending_state_BANG_(this);
   };
-}(x25998_26013);
-x25998_26013.shouldComponentUpdate = function(a) {
+}(x37506_37521);
+x37506_37521.shouldComponentUpdate = function(a) {
   return function(a, c) {
     var d = cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(om.next.props(this), goog.object.get(a, "omcljs$value"));
     if (d) {
@@ -35025,31 +35025,31 @@ x25998_26013.shouldComponentUpdate = function(a) {
     d = this.state;
     return cljs.core.truth_(d) ? cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(goog.object.get(this.state, "omcljs$state"), goog.object.get(c, "omcljs$state")) : d;
   };
-}(x25998_26013);
-x25998_26013.componentWillUnmount = function(a) {
+}(x37506_37521);
+x37506_37521.componentWillUnmount = function(a) {
   return function() {
     var a = om.next.get_reconciler(this), c = (new cljs.core.Keyword(null, "config", "config", 994861415)).cljs$core$IFn$_invoke$arity$1(a), a = (new cljs.core.Keyword(null, "state", "state", -1988618099)).cljs$core$IFn$_invoke$arity$1(c), c = (new cljs.core.Keyword(null, "indexer", "indexer", -1774914315)).cljs$core$IFn$_invoke$arity$1(c);
     null != a && cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$variadic(a, cljs.core.update_in, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("om.next", "queries", "om.next/queries", -22717146)], null), cljs.core.dissoc, cljs.core.array_seq([this], 0));
     return null == c ? null : om.next.protocols.drop_component_BANG_(c, this);
   };
-}(x25998_26013);
-x25998_26013.componentDidUpdate = function(a) {
+}(x37506_37521);
+x37506_37521.componentDidUpdate = function(a) {
   return function(a, c) {
     return om.next.clear_prev_props_BANG_(this);
   };
-}(x25998_26013);
-x25998_26013.isMounted = function(a) {
+}(x37506_37521);
+x37506_37521.isMounted = function(a) {
   return function() {
     return cljs.core.boolean$(goog.object.getValueByKeys(this, "_reactInternalInstance", "_renderedComponent"));
   };
-}(x25998_26013);
-x25998_26013.componentWillMount = function(a) {
+}(x37506_37521);
+x37506_37521.componentWillMount = function(a) {
   return function() {
     var a = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(om.next.get_reconciler(this), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "config", "config", 994861415), new cljs.core.Keyword(null, "indexer", "indexer", -1774914315)], null));
     return null == a ? null : om.next.protocols.index_component_BANG_(a, this);
   };
-}(x25998_26013);
-x25998_26013.render = function(a) {
+}(x37506_37521);
+x37506_37521.render = function(a) {
   return function() {
     var a = om.next._STAR_reconciler_STAR_, c = om.next._STAR_depth_STAR_, d = om.next._STAR_shared_STAR_, e = om.next._STAR_instrument_STAR_, f = om.next._STAR_parent_STAR_;
     om.next._STAR_reconciler_STAR_ = om.next.get_reconciler(this);
@@ -35065,10 +35065,10 @@ x25998_26013.render = function(a) {
       om.next._STAR_parent_STAR_ = f, om.next._STAR_instrument_STAR_ = e, om.next._STAR_shared_STAR_ = d, om.next._STAR_depth_STAR_ = c, om.next._STAR_reconciler_STAR_ = a;
     }
   };
-}(x25998_26013);
+}(x37506_37521);
 home.comps.widget.raw_str_widget_ui.prototype.constructor = home.comps.widget.raw_str_widget_ui;
 home.comps.widget.raw_str_widget_ui.prototype.om$isComponent = !0;
-var x26011_26014 = home.comps.widget.raw_str_widget_ui, x26012_26015 = home.comps.widget.raw_str_widget_ui.prototype;
+var x37519_37522 = home.comps.widget.raw_str_widget_ui, x37520_37523 = home.comps.widget.raw_str_widget_ui.prototype;
 home.comps.widget.raw_str_widget_ui.cljs$lang$type = !0;
 home.comps.widget.raw_str_widget_ui.cljs$lang$ctorStr = "home.comps.widget/raw-str-widget-ui";
 home.comps.widget.raw_str_widget_ui.cljs$lang$ctorPrWriter = function(a, b, c) {
@@ -35081,14 +35081,14 @@ home.comps.widget.un_bouton_ui = function() {
   return this;
 };
 home.comps.widget.un_bouton_ui.prototype = goog.object.clone(React.Component.prototype);
-var x26020_26038 = home.comps.widget.un_bouton_ui.prototype;
-x26020_26038.componentWillUpdate = function(a) {
+var x37528_37546 = home.comps.widget.un_bouton_ui.prototype;
+x37528_37546.componentWillUpdate = function(a) {
   return function(a, c) {
     om.next.merge_pending_props_BANG_(this);
     return om.next.merge_pending_state_BANG_(this);
   };
-}(x26020_26038);
-x26020_26038.shouldComponentUpdate = function(a) {
+}(x37528_37546);
+x37528_37546.shouldComponentUpdate = function(a) {
   return function(a, c) {
     var d = cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(om.next.props(this), goog.object.get(a, "omcljs$value"));
     if (d) {
@@ -35097,31 +35097,31 @@ x26020_26038.shouldComponentUpdate = function(a) {
     d = this.state;
     return cljs.core.truth_(d) ? cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(goog.object.get(this.state, "omcljs$state"), goog.object.get(c, "omcljs$state")) : d;
   };
-}(x26020_26038);
-x26020_26038.componentWillUnmount = function(a) {
+}(x37528_37546);
+x37528_37546.componentWillUnmount = function(a) {
   return function() {
     var a = om.next.get_reconciler(this), c = (new cljs.core.Keyword(null, "config", "config", 994861415)).cljs$core$IFn$_invoke$arity$1(a), a = (new cljs.core.Keyword(null, "state", "state", -1988618099)).cljs$core$IFn$_invoke$arity$1(c), c = (new cljs.core.Keyword(null, "indexer", "indexer", -1774914315)).cljs$core$IFn$_invoke$arity$1(c);
     null != a && cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$variadic(a, cljs.core.update_in, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("om.next", "queries", "om.next/queries", -22717146)], null), cljs.core.dissoc, cljs.core.array_seq([this], 0));
     return null == c ? null : om.next.protocols.drop_component_BANG_(c, this);
   };
-}(x26020_26038);
-x26020_26038.componentDidUpdate = function(a) {
+}(x37528_37546);
+x37528_37546.componentDidUpdate = function(a) {
   return function(a, c) {
     return om.next.clear_prev_props_BANG_(this);
   };
-}(x26020_26038);
-x26020_26038.isMounted = function(a) {
+}(x37528_37546);
+x37528_37546.isMounted = function(a) {
   return function() {
     return cljs.core.boolean$(goog.object.getValueByKeys(this, "_reactInternalInstance", "_renderedComponent"));
   };
-}(x26020_26038);
-x26020_26038.componentWillMount = function(a) {
+}(x37528_37546);
+x37528_37546.componentWillMount = function(a) {
   return function() {
     var a = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(om.next.get_reconciler(this), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "config", "config", 994861415), new cljs.core.Keyword(null, "indexer", "indexer", -1774914315)], null));
     return null == a ? null : om.next.protocols.index_component_BANG_(a, this);
   };
-}(x26020_26038);
-x26020_26038.render = function(a) {
+}(x37528_37546);
+x37528_37546.render = function(a) {
   return function() {
     var a = om.next._STAR_reconciler_STAR_, c = om.next._STAR_depth_STAR_, d = om.next._STAR_shared_STAR_, e = om.next._STAR_instrument_STAR_, f = om.next._STAR_parent_STAR_;
     om.next._STAR_reconciler_STAR_ = om.next.get_reconciler(this);
@@ -35137,10 +35137,10 @@ x26020_26038.render = function(a) {
       om.next._STAR_parent_STAR_ = f, om.next._STAR_instrument_STAR_ = e, om.next._STAR_shared_STAR_ = d, om.next._STAR_depth_STAR_ = c, om.next._STAR_reconciler_STAR_ = a;
     }
   };
-}(x26020_26038);
+}(x37528_37546);
 home.comps.widget.un_bouton_ui.prototype.constructor = home.comps.widget.un_bouton_ui;
 home.comps.widget.un_bouton_ui.prototype.om$isComponent = !0;
-var x26036_26039 = home.comps.widget.un_bouton_ui, x26037_26040 = home.comps.widget.un_bouton_ui.prototype;
+var x37544_37547 = home.comps.widget.un_bouton_ui, x37545_37548 = home.comps.widget.un_bouton_ui.prototype;
 home.comps.widget.un_bouton_ui.cljs$lang$type = !0;
 home.comps.widget.un_bouton_ui.cljs$lang$ctorStr = "home.comps.widget/un-bouton-ui";
 home.comps.widget.un_bouton_ui.cljs$lang$ctorPrWriter = function(a, b, c) {
@@ -35153,14 +35153,14 @@ home.comps.widget.hello_ui = function() {
   return this;
 };
 home.comps.widget.hello_ui.prototype = goog.object.clone(React.Component.prototype);
-var x26045_26144 = home.comps.widget.hello_ui.prototype;
-x26045_26144.componentWillUpdate = function(a) {
+var x37553_37652 = home.comps.widget.hello_ui.prototype;
+x37553_37652.componentWillUpdate = function(a) {
   return function(a, c) {
     om.next.merge_pending_props_BANG_(this);
     return om.next.merge_pending_state_BANG_(this);
   };
-}(x26045_26144);
-x26045_26144.shouldComponentUpdate = function(a) {
+}(x37553_37652);
+x37553_37652.shouldComponentUpdate = function(a) {
   return function(a, c) {
     var d = cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(om.next.props(this), goog.object.get(a, "omcljs$value"));
     if (d) {
@@ -35169,31 +35169,31 @@ x26045_26144.shouldComponentUpdate = function(a) {
     d = this.state;
     return cljs.core.truth_(d) ? cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(goog.object.get(this.state, "omcljs$state"), goog.object.get(c, "omcljs$state")) : d;
   };
-}(x26045_26144);
-x26045_26144.componentWillUnmount = function(a) {
+}(x37553_37652);
+x37553_37652.componentWillUnmount = function(a) {
   return function() {
     var a = om.next.get_reconciler(this), c = (new cljs.core.Keyword(null, "config", "config", 994861415)).cljs$core$IFn$_invoke$arity$1(a), a = (new cljs.core.Keyword(null, "state", "state", -1988618099)).cljs$core$IFn$_invoke$arity$1(c), c = (new cljs.core.Keyword(null, "indexer", "indexer", -1774914315)).cljs$core$IFn$_invoke$arity$1(c);
     null != a && cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$variadic(a, cljs.core.update_in, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("om.next", "queries", "om.next/queries", -22717146)], null), cljs.core.dissoc, cljs.core.array_seq([this], 0));
     return null == c ? null : om.next.protocols.drop_component_BANG_(c, this);
   };
-}(x26045_26144);
-x26045_26144.componentDidUpdate = function(a) {
+}(x37553_37652);
+x37553_37652.componentDidUpdate = function(a) {
   return function(a, c) {
     return om.next.clear_prev_props_BANG_(this);
   };
-}(x26045_26144);
-x26045_26144.isMounted = function(a) {
+}(x37553_37652);
+x37553_37652.isMounted = function(a) {
   return function() {
     return cljs.core.boolean$(goog.object.getValueByKeys(this, "_reactInternalInstance", "_renderedComponent"));
   };
-}(x26045_26144);
-x26045_26144.componentWillMount = function(a) {
+}(x37553_37652);
+x37553_37652.componentWillMount = function(a) {
   return function() {
     var a = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(om.next.get_reconciler(this), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "config", "config", 994861415), new cljs.core.Keyword(null, "indexer", "indexer", -1774914315)], null));
     return null == a ? null : om.next.protocols.index_component_BANG_(a, this);
   };
-}(x26045_26144);
-x26045_26144.render = function(a) {
+}(x37553_37652);
+x37553_37652.render = function(a) {
   return function() {
     var b = this, c = om.next._STAR_reconciler_STAR_, d = om.next._STAR_depth_STAR_, e = om.next._STAR_shared_STAR_, f = om.next._STAR_instrument_STAR_, g = om.next._STAR_parent_STAR_;
     om.next._STAR_reconciler_STAR_ = om.next.get_reconciler(b);
@@ -35255,10 +35255,10 @@ x26045_26144.render = function(a) {
       om.next._STAR_parent_STAR_ = g, om.next._STAR_instrument_STAR_ = f, om.next._STAR_shared_STAR_ = e, om.next._STAR_depth_STAR_ = d, om.next._STAR_reconciler_STAR_ = c;
     }
   };
-}(x26045_26144);
+}(x37553_37652);
 home.comps.widget.hello_ui.prototype.constructor = home.comps.widget.hello_ui;
 home.comps.widget.hello_ui.prototype.om$isComponent = !0;
-var x26142_26146 = home.comps.widget.hello_ui, x26143_26147 = home.comps.widget.hello_ui.prototype;
+var x37650_37654 = home.comps.widget.hello_ui, x37651_37655 = home.comps.widget.hello_ui.prototype;
 home.comps.widget.hello_ui.cljs$lang$type = !0;
 home.comps.widget.hello_ui.cljs$lang$ctorStr = "home.comps.widget/hello-ui";
 home.comps.widget.hello_ui.cljs$lang$ctorPrWriter = function(a, b, c) {
@@ -44765,14 +44765,14 @@ ui.templates.default_template_ui = function() {
   return this;
 };
 ui.templates.default_template_ui.prototype = goog.object.clone(React.Component.prototype);
-var x19570_19658 = ui.templates.default_template_ui.prototype;
-x19570_19658.componentWillUpdate = function(a) {
+var x37300_37388 = ui.templates.default_template_ui.prototype;
+x37300_37388.componentWillUpdate = function(a) {
   return function(a, c) {
     om.next.merge_pending_props_BANG_(this);
     return om.next.merge_pending_state_BANG_(this);
   };
-}(x19570_19658);
-x19570_19658.shouldComponentUpdate = function(a) {
+}(x37300_37388);
+x37300_37388.shouldComponentUpdate = function(a) {
   return function(a, c) {
     var d = cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(om.next.props(this), goog.object.get(a, "omcljs$value"));
     if (d) {
@@ -44781,31 +44781,31 @@ x19570_19658.shouldComponentUpdate = function(a) {
     d = this.state;
     return cljs.core.truth_(d) ? cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(goog.object.get(this.state, "omcljs$state"), goog.object.get(c, "omcljs$state")) : d;
   };
-}(x19570_19658);
-x19570_19658.componentWillUnmount = function(a) {
+}(x37300_37388);
+x37300_37388.componentWillUnmount = function(a) {
   return function() {
     var a = om.next.get_reconciler(this), c = (new cljs.core.Keyword(null, "config", "config", 994861415)).cljs$core$IFn$_invoke$arity$1(a), a = (new cljs.core.Keyword(null, "state", "state", -1988618099)).cljs$core$IFn$_invoke$arity$1(c), c = (new cljs.core.Keyword(null, "indexer", "indexer", -1774914315)).cljs$core$IFn$_invoke$arity$1(c);
     null != a && cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$variadic(a, cljs.core.update_in, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("om.next", "queries", "om.next/queries", -22717146)], null), cljs.core.dissoc, cljs.core.array_seq([this], 0));
     return null == c ? null : om.next.protocols.drop_component_BANG_(c, this);
   };
-}(x19570_19658);
-x19570_19658.componentDidUpdate = function(a) {
+}(x37300_37388);
+x37300_37388.componentDidUpdate = function(a) {
   return function(a, c) {
     return om.next.clear_prev_props_BANG_(this);
   };
-}(x19570_19658);
-x19570_19658.isMounted = function(a) {
+}(x37300_37388);
+x37300_37388.isMounted = function(a) {
   return function() {
     return cljs.core.boolean$(goog.object.getValueByKeys(this, "_reactInternalInstance", "_renderedComponent"));
   };
-}(x19570_19658);
-x19570_19658.componentWillMount = function(a) {
+}(x37300_37388);
+x37300_37388.componentWillMount = function(a) {
   return function() {
     var a = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(om.next.get_reconciler(this), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "config", "config", 994861415), new cljs.core.Keyword(null, "indexer", "indexer", -1774914315)], null));
     return null == a ? null : om.next.protocols.index_component_BANG_(a, this);
   };
-}(x19570_19658);
-x19570_19658.render = function(a) {
+}(x37300_37388);
+x37300_37388.render = function(a) {
   return function() {
     var a = om.next._STAR_reconciler_STAR_, c = om.next._STAR_depth_STAR_, d = om.next._STAR_shared_STAR_, e = om.next._STAR_instrument_STAR_, f = om.next._STAR_parent_STAR_;
     om.next._STAR_reconciler_STAR_ = om.next.get_reconciler(this);
@@ -44841,10 +44841,10 @@ x19570_19658.render = function(a) {
       om.next._STAR_parent_STAR_ = f, om.next._STAR_instrument_STAR_ = e, om.next._STAR_shared_STAR_ = d, om.next._STAR_depth_STAR_ = c, om.next._STAR_reconciler_STAR_ = a;
     }
   };
-}(x19570_19658);
+}(x37300_37388);
 ui.templates.default_template_ui.prototype.constructor = ui.templates.default_template_ui;
 ui.templates.default_template_ui.prototype.om$isComponent = !0;
-var x19656_19659 = ui.templates.default_template_ui, x19657_19660 = ui.templates.default_template_ui.prototype;
+var x37386_37389 = ui.templates.default_template_ui, x37387_37390 = ui.templates.default_template_ui.prototype;
 ui.templates.default_template_ui.cljs$lang$type = !0;
 ui.templates.default_template_ui.cljs$lang$ctorStr = "ui.templates/default-template-ui";
 ui.templates.default_template_ui.cljs$lang$ctorPrWriter = function(a, b, c) {
@@ -44857,14 +44857,14 @@ ui.templates.raw_template_ui = function() {
   return this;
 };
 ui.templates.raw_template_ui.prototype = goog.object.clone(React.Component.prototype);
-var x19665_19753 = ui.templates.raw_template_ui.prototype;
-x19665_19753.componentWillUpdate = function(a) {
+var x37395_37483 = ui.templates.raw_template_ui.prototype;
+x37395_37483.componentWillUpdate = function(a) {
   return function(a, c) {
     om.next.merge_pending_props_BANG_(this);
     return om.next.merge_pending_state_BANG_(this);
   };
-}(x19665_19753);
-x19665_19753.shouldComponentUpdate = function(a) {
+}(x37395_37483);
+x37395_37483.shouldComponentUpdate = function(a) {
   return function(a, c) {
     var d = cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(om.next.props(this), goog.object.get(a, "omcljs$value"));
     if (d) {
@@ -44873,31 +44873,31 @@ x19665_19753.shouldComponentUpdate = function(a) {
     d = this.state;
     return cljs.core.truth_(d) ? cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(goog.object.get(this.state, "omcljs$state"), goog.object.get(c, "omcljs$state")) : d;
   };
-}(x19665_19753);
-x19665_19753.componentWillUnmount = function(a) {
+}(x37395_37483);
+x37395_37483.componentWillUnmount = function(a) {
   return function() {
     var a = om.next.get_reconciler(this), c = (new cljs.core.Keyword(null, "config", "config", 994861415)).cljs$core$IFn$_invoke$arity$1(a), a = (new cljs.core.Keyword(null, "state", "state", -1988618099)).cljs$core$IFn$_invoke$arity$1(c), c = (new cljs.core.Keyword(null, "indexer", "indexer", -1774914315)).cljs$core$IFn$_invoke$arity$1(c);
     null != a && cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$variadic(a, cljs.core.update_in, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("om.next", "queries", "om.next/queries", -22717146)], null), cljs.core.dissoc, cljs.core.array_seq([this], 0));
     return null == c ? null : om.next.protocols.drop_component_BANG_(c, this);
   };
-}(x19665_19753);
-x19665_19753.componentDidUpdate = function(a) {
+}(x37395_37483);
+x37395_37483.componentDidUpdate = function(a) {
   return function(a, c) {
     return om.next.clear_prev_props_BANG_(this);
   };
-}(x19665_19753);
-x19665_19753.isMounted = function(a) {
+}(x37395_37483);
+x37395_37483.isMounted = function(a) {
   return function() {
     return cljs.core.boolean$(goog.object.getValueByKeys(this, "_reactInternalInstance", "_renderedComponent"));
   };
-}(x19665_19753);
-x19665_19753.componentWillMount = function(a) {
+}(x37395_37483);
+x37395_37483.componentWillMount = function(a) {
   return function() {
     var a = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(om.next.get_reconciler(this), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "config", "config", 994861415), new cljs.core.Keyword(null, "indexer", "indexer", -1774914315)], null));
     return null == a ? null : om.next.protocols.index_component_BANG_(a, this);
   };
-}(x19665_19753);
-x19665_19753.render = function(a) {
+}(x37395_37483);
+x37395_37483.render = function(a) {
   return function() {
     var a = om.next._STAR_reconciler_STAR_, c = om.next._STAR_depth_STAR_, d = om.next._STAR_shared_STAR_, e = om.next._STAR_instrument_STAR_, f = om.next._STAR_parent_STAR_;
     om.next._STAR_reconciler_STAR_ = om.next.get_reconciler(this);
@@ -44933,10 +44933,10 @@ x19665_19753.render = function(a) {
       om.next._STAR_parent_STAR_ = f, om.next._STAR_instrument_STAR_ = e, om.next._STAR_shared_STAR_ = d, om.next._STAR_depth_STAR_ = c, om.next._STAR_reconciler_STAR_ = a;
     }
   };
-}(x19665_19753);
+}(x37395_37483);
 ui.templates.raw_template_ui.prototype.constructor = ui.templates.raw_template_ui;
 ui.templates.raw_template_ui.prototype.om$isComponent = !0;
-var x19751_19754 = ui.templates.raw_template_ui, x19752_19755 = ui.templates.raw_template_ui.prototype;
+var x37481_37484 = ui.templates.raw_template_ui, x37482_37485 = ui.templates.raw_template_ui.prototype;
 ui.templates.raw_template_ui.cljs$lang$type = !0;
 ui.templates.raw_template_ui.cljs$lang$ctorStr = "ui.templates/raw-template-ui";
 ui.templates.raw_template_ui.cljs$lang$ctorPrWriter = function(a, b, c) {
@@ -45269,12 +45269,12 @@ cljs_express.endpoints.check_github_users = function(a, b) {
               q), c[2] = f, c[1] = 8, new cljs.core.Keyword(null, "recur", "recur", -437573268);
             }
             if (3 === d) {
-              var t = c[10], u = c[11], e = c[7], n = c[8], p = c[9], v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(t, 0, null), f = function() {
+              var t = c[10], n = c[8], e = c[7], u = c[11], p = c[9], v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(u, 0, null), f = function() {
                 return function(a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, t) {
                   return function(a) {
                     return cljs.core.map.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null, "login", "login", 55217519), (new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(a));
                   };
-                }(n, p, t, u, e, t, t, v, t, u, e, n, p, v, d, a);
+                }(n, p, u, t, e, u, u, v, t, n, e, u, p, v, d, a);
               }(), w = cljs_express.endpoints.handle_response(v, f), f = cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["Names: ", w], 0)), q = express.sugar.status(b, 200), r = cljs.core.PersistentVector.EMPTY_NODE, x = [new cljs.core.Keyword(null, "title", "title", 636505583), new cljs.core.Keyword(null, "content", "content", 15833224)], y = [new cljs.core.Keyword(null, "text", "text", -1790561697)], w = [clojure.string.join.cljs$core$IFn$_invoke$arity$2(",", w)], y = cljs.core.PersistentHashMap.fromArrays(y, 
               w), y = ["Github Users", home.comps.widget.raw_str_widget.cljs$core$IFn$_invoke$arity$1 ? home.comps.widget.raw_str_widget.cljs$core$IFn$_invoke$arity$1(y) : home.comps.widget.raw_str_widget.call(null, y)], x = cljs.core.PersistentHashMap.fromArrays(x, y), x = [new cljs.core.Keyword(null, "default", "default", -1987822328), x], r = new cljs.core.PersistentVector(null, 2, 5, r, x, null), r = ui.templates.render(r), q = express.sugar.send(q, r);
               c[12] = f;
@@ -45282,7 +45282,7 @@ cljs_express.endpoints.check_github_users = function(a, b) {
               c[1] = 5;
               return new cljs.core.Keyword(null, "recur", "recur", -437573268);
             }
-            return 2 === d ? (t = c[10], e = c[7], n = c[8], f = c[2], u = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(f, 0, null), q = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(f, 1, null), r = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(q, n), c[10] = f, c[11] = u, c[7] = q, c[1] = r ? 3 : 4, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 11 === d ? (f = c[2], c[2] = f, c[1] = 8, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 9 === d ? (u = c[11], c[2] = u, c[1] = 
+            return 2 === d ? (n = c[8], e = c[7], u = c[11], f = c[2], t = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(f, 0, null), q = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(f, 1, null), r = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(q, n), c[10] = t, c[7] = q, c[11] = f, c[1] = r ? 3 : 4, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 11 === d ? (f = c[2], c[2] = f, c[1] = 8, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 9 === d ? (t = c[10], c[2] = t, c[1] = 
             11, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 5 === d ? (f = c[2], cljs.core.async.impl.ioc_helpers.return_chan(c, f)) : 10 === d ? (c[2] = null, c[1] = 11, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 8 === d ? (f = c[2], c[2] = f, c[1] = 5, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : null;
           };
         }(a), a);
@@ -45357,20 +45357,20 @@ cljs_express.endpoints.check_weather = function(a, b) {
               var n = d[8], p = d[9], q = d[10], r = d[11], l = a.params, t = l.city, u = [cljs.core.str("City Query: "), cljs.core.str(t)].join(""), u = cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([u], 0)), v = [cljs.core.str("http://api.openweathermap.org/data/2.5/weather?q\x3d"), cljs.core.str(t)].join(""), v = cljs_http.client.get(v), w = cljs.core.async.timeout(1E3), x = new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [v, w], null);
               d[8] = l;
               d[12] = u;
-              d[9] = t;
-              d[10] = w;
-              d[11] = v;
+              d[9] = w;
+              d[10] = v;
+              d[11] = t;
               return cljs.core.async.ioc_alts_BANG_(d, 2, x);
             }
             if (4 === e) {
-              return q = d[10], f = d[7], l = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(f, q), d[1] = l ? 6 : 7, new cljs.core.Keyword(null, "recur", "recur", -437573268);
+              return p = d[9], f = d[7], l = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(f, p), d[1] = l ? 6 : 7, new cljs.core.Keyword(null, "recur", "recur", -437573268);
             }
             if (6 === e) {
               return l = express.sugar.status(b, 200), t = cljs.core.PersistentVector.EMPTY_NODE, u = [new cljs.core.Keyword(null, "title", "title", 636505583), new cljs.core.Keyword(null, "content", "content", 15833224)], u = cljs.core.PersistentHashMap.fromArrays(u, ["Weather", "Could not Fetch the Weather Info."]), u = [new cljs.core.Keyword(null, "default", "default", -1987822328), u], t = new cljs.core.PersistentVector(null, 2, 5, t, u, null), t = ui.templates.render(t), l = express.sugar.send(l, 
               t), d[2] = l, d[1] = 8, new cljs.core.Keyword(null, "recur", "recur", -437573268);
             }
             if (3 === e) {
-              var n = d[8], y = d[13], p = d[9], E = d[14], q = d[10], r = d[11], f = d[7], A = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(y, 0, null), T = cljs.core.js__GT_clj.cljs$core$IFn$_invoke$arity$1(A), l = function() {
+              var n = d[8], y = d[13], p = d[9], q = d[10], f = d[7], r = d[11], E = d[14], A = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(E, 0, null), T = cljs.core.js__GT_clj.cljs$core$IFn$_invoke$arity$1(A), l = function() {
                 return function(a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, t, u, v, w, x, y) {
                   return function(a) {
                     var b = (new cljs.core.Keyword(null, "name", "name", 1843675177)).cljs$core$IFn$_invoke$arity$1((new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(a)), c = (new cljs.core.Keyword(null, "country", "country", 312965309)).cljs$core$IFn$_invoke$arity$1((new cljs.core.Keyword(null, "sys", "sys", -592279430)).cljs$core$IFn$_invoke$arity$1((new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(a))), d = (new cljs.core.Keyword(null, 
@@ -45378,7 +45378,7 @@ cljs_express.endpoints.check_weather = function(a, b) {
                     a = (new cljs.core.Keyword(null, "temp", "temp", 1791541284)).cljs$core$IFn$_invoke$arity$1((new cljs.core.Keyword(null, "main", "main", -2117802661)).cljs$core$IFn$_invoke$arity$1((new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(a)));
                     return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [b, c, d, a], null);
                   };
-                }(f, y, q, p, n, r, y, E, A, y, n, y, p, E, q, r, f, A, T, e, c);
+                }(E, E, q, r, p, n, f, y, A, E, n, y, p, q, f, r, E, A, T, e, c);
               }(), x = cljs_express.endpoints.handle_response(T, l), l = cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([x], 0)), t = express.sugar.status(b, 200), u = cljs.core.PersistentVector.EMPTY_NODE, v = [new cljs.core.Keyword(null, "title", "title", 636505583), new cljs.core.Keyword(null, "content", "content", 15833224)], w = [new cljs.core.Keyword(null, "text", "text", -1790561697)], x = [clojure.string.join.cljs$core$IFn$_invoke$arity$2(",", x)], w = cljs.core.PersistentHashMap.fromArrays(w, 
               x), w = ["Weather", home.comps.widget.raw_str_widget.cljs$core$IFn$_invoke$arity$1 ? home.comps.widget.raw_str_widget.cljs$core$IFn$_invoke$arity$1(w) : home.comps.widget.raw_str_widget.call(null, w)], v = cljs.core.PersistentHashMap.fromArrays(v, w), v = [new cljs.core.Keyword(null, "default", "default", -1987822328), v], u = new cljs.core.PersistentVector(null, 2, 5, u, v, null), u = ui.templates.render(u), t = express.sugar.send(t, u);
               d[15] = l;
@@ -45386,7 +45386,7 @@ cljs_express.endpoints.check_weather = function(a, b) {
               d[1] = 5;
               return new cljs.core.Keyword(null, "recur", "recur", -437573268);
             }
-            return 2 === e ? (y = d[13], r = d[11], f = d[7], l = d[2], E = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(l, 0, null), t = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(l, 1, null), u = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(t, r), d[13] = l, d[14] = E, d[7] = t, d[1] = u ? 3 : 4, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 11 === e ? (l = d[2], d[2] = l, d[1] = 8, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 9 === e ? (E = d[14], d[2] = E, d[1] = 
+            return 2 === e ? (q = d[10], f = d[7], E = d[14], l = d[2], y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(l, 0, null), t = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(l, 1, null), u = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(t, q), d[13] = y, d[7] = t, d[14] = l, d[1] = u ? 3 : 4, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 11 === e ? (l = d[2], d[2] = l, d[1] = 8, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 9 === e ? (y = d[13], d[2] = y, d[1] = 
             11, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 5 === e ? (l = d[2], cljs.core.async.impl.ioc_helpers.return_chan(d, l)) : 10 === e ? (d[2] = null, d[1] = 11, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : 8 === e ? (l = d[2], d[2] = l, d[1] = 5, new cljs.core.Keyword(null, "recur", "recur", -437573268)) : null;
           };
         }(c), c);
