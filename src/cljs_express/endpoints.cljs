@@ -1,12 +1,16 @@
 (ns cljs_express.endpoints
-  (:require-macros [cljs.core.async.macros :refer [alt! go]])
-  (:require [cljs.nodejs :as nodejs]
+  (:require-macros [cljs.core.async.macros :refer [alt! go]]
+                   [com.rpl.specter.macros :refer [paramsfn]])
+  (:require [cljs-http.client :as http]
+            [cljs.core.async :as async :refer [<! put! chan close! timeout]]
+            [com.rpl.specter :as s]
+            [cljs.nodejs :as nodejs]
             [util.os :as os]
             [express.sugar :as ex]
+            [parse.candy :as cdy]
             [ui.templates :as tmpl]
             [home.comps.widget :as widget]
-            [cljs-http.client :as http]
-            [cljs.core.async :as async :refer [<! put! chan close! timeout]]))
+            [data.db :as db]))
 
 (nodejs/enable-util-print!)
 
@@ -28,12 +32,13 @@
                 [:default
                  {:title "SS Reacting"
                   :content (widget/hello {:upper-bound 8})
-                  :script "/public/js/base.js"
+                  :script "/js/base.js"
                   }]))
       ))
 
 (defn say-hello!
   [req res]
+  (println "Was DB Round Trip Successful? " (db/do-round-trip))
   (-> res
       (ex/status 200)
       (ex/send (tmpl/render
@@ -85,18 +90,15 @@
             city-query (aget params "city")]
         (println (str "City Query: " city-query))
         (alt!
-          (http/get (str "http://api.openweathermap.org/data/2.5/weather?q=" city-query))
+          (http/get (str "http://api.openweathermap.org/data/2.5/weather?q=" city-query "&appid=2de143494c0b295cca9337e1e96b00e0"))
           ([raw-resp]
-           (let [weather-info (-> raw-resp
-                                  (js->clj)
-                                  (handle-response
-                                   (fn [resp]
+           (let [grab-data-fn (fn [resp]
                                      (let [city (-> resp :body :name)
                                            country (-> resp :body :sys :country)
                                            description (-> resp :body :weather first :description)
                                            temperature (-> resp :body :main :temp)]
-                                       [city country description temperature])
-                                     )))]
+                                       [city country description temperature]))
+                 weather-info (-> raw-resp (js->clj) (handle-response grab-data-fn))]
              (prn weather-info)
              (-> res
                  (ex/status 200)
@@ -141,4 +143,3 @@
       (ex/send (tmpl/render
                  [:none "Stopping..."]))
       ))
-

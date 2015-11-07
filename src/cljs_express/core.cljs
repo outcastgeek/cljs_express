@@ -18,10 +18,16 @@
     [:all "/foo" ep/say-hello!]))
 
 (defn -main []
-  (-> (ex/app)
-      (ex/static "static" "/public")
+  (let [staticFolder (if-let [STATIC (os/env "STATIC")] STATIC "static")
+        portNumber (if-let [PORT (os/env "PORT")] PORT 3333)]
+    (println "Static Folder: " staticFolder)
+    (println "Port Number: " portNumber)
+    (-> (ex/app)
+      (ex/static staticFolder)
+      ;(ex/static (if-let [STATIC (os/env "STATIC")] STATIC "static") "/public")
       (ex/use (ex/logger "combined"))                      ; Logger
       (ex/use "/" routes)
-      (ex/listen (if-let [PORT (os/env "PORT")] PORT 3333))))
+      (ex/listen portNumber))
+    ))
 
 (set! *main-cli-fn* -main)

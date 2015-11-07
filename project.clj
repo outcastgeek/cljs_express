@@ -6,12 +6,18 @@
 
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/clojurescript "1.7.145"]
+                 ;[org.clojure/core.async "0.2.371"]
                  [org.clojure/core.typed "0.3.11"]
                  [org.clojure/core.match "0.3.0-alpha4"]
-                 [com.cognitect/transit-cljs "0.8.220"]
+                 ;[com.cognitect/transit-clj "0.8.285"]
+                 [com.cognitect/transit-cljs "0.8.225"]
                  [org.omcljs/om "1.0.0-alpha14"]
                  [sablono "0.3.6" :exclusions [cljsjs/react]]
-                 [cljs-http "0.1.37"]]
+                 [cljs-http "0.1.37"]
+                 [datascript "0.13.3"]
+                 [datascript-transit "0.2.0" :exclusions [com.cognitect/transit-clj
+                                                          com.cognitect/transit-cljs]]
+                 [com.rpl/specter "0.8.0"]]
 
   :plugins [[lein-cljsbuild "1.0.6"]]
 

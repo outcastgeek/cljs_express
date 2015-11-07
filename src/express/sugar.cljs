@@ -7,13 +7,21 @@
 ;; Constants
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(def ^{:doc "Global express import."
-       :private true}
+(defonce ^{:doc "Global express import."
+           :private true}
   express (nodejs/require "express"))
 
-(def ^{:doc "Global logger import."
-       :private true}
+(defonce ^{:doc "Global logger import."
+           :private true}
   logger (nodejs/require "morgan"))
+
+;(defonce ^{:doc "File System import."
+;           :private true}
+;  fs (js/require "fs"))
+
+(defonce ^{:doc "Serve static files"
+           :private true}
+  serve-static (nodejs/require "serve-static"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Constructors
@@ -59,7 +67,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Helpers
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defn use
   "Attach middlware to express app."
@@ -102,8 +110,15 @@
   [app key]
   (.disabled app key))
 
+;(defn static
+;  ([app path]
+;   (use app ((aget express "static") path)))
+;  ([app path mount]
+;   (use app mount ((aget express "static") path))))
+
 (defn static
-  ([app path]
-   (use app ((aget express "static") path)))
-  ([app path mount]
-   (use app mount ((aget express "static") path))))
+  [app path]
+  (let [webdir (str js/__dirname "/" path)]
+    (println "WEBDIR:" webdir)
+    (use app (serve-static webdir (clj->js {:index false})))
+    ))
